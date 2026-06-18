@@ -511,11 +511,47 @@
     .achievements-grid { grid-template-columns: 1fr; }
     .about-stats { grid-template-columns: 1fr; }
   }
-  @media (prefers-reduced-motion: reduce) {
+ @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
     .reveal { opacity: 1 !important; transform: none !important; }
   }
-</style>
+
+  /* ─── ABOUT PHOTOS ─── */
+  .about-photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .about-photo-item {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    background: var(--navy);
+  }
+  .about-photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .about-photo-item:hover img {
+    transform: scale(1.04);
+  }
+  .about-photo-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 0.6rem 0.75rem;
+    background: linear-gradient(to top, rgba(10,22,40,0.85), transparent);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+
+</style> 
 </head>
 <body>
 
@@ -549,10 +585,10 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           Get in Touch
         </a>
-        <a href="#" class="btn-outline" onclick="alert('Resume download — add your PDF link here.')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download CV
-        </a>
+        <a href="Rudraksh_Mali_CV.pdf" class="btn-outline">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+  Download CV
+</a>
         <a href="https://www.linkedin.com/in/rudraksh-mali1975/" target="_blank" class="btn-outline">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
           LinkedIn
@@ -561,10 +597,7 @@
     </div>
     <div class="hero-photo-wrap">
       <div class="hero-photo">
-  <img src="images/profile.jpg" alt="Rudraksh Mali" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
-  <span class="photo-label">Rudraksh Mali · Loughborough, UK</span>
-</div>
-        </div>
+        <img src="images/profile.jpg" alt="Rudraksh Mali" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
         <span class="photo-label">Rudraksh Mali · Loughborough, UK</span>
       </div>
     </div>
@@ -592,24 +625,25 @@
           <span class="tag">Product Development</span><span class="tag">Industry 4.0</span>
         </div>
       </div>
-      <div class="about-stats reveal reveal-delay-2">
-        <div class="stat-block">
-          <div class="stat-num">25</div>
-          <div class="stat-label">Engineers Led as Team Captain</div>
-        </div>
-        <div class="stat-block">
-          <div class="stat-num">9th</div>
-          <div class="stat-label">All India Rank · Formula Bharat</div>
-        </div>
-        <div class="stat-block">
-          <div class="stat-num">23%</div>
-          <div class="stat-label">Weight Reduction on Chassis</div>
-        </div>
-        <div class="stat-block">
-          <div class="stat-num">3×</div>
-          <div class="stat-label">Consecutive Years as Team Captain</div>
-        </div>
-      </div>
+      <div class="about-photos reveal reveal-delay-2">
+  <div class="about-photo-grid">
+    <div class="about-photo-item">
+      <img src="images/photo1.jpg" alt="Formula Bharat Race Car">
+      <span class="about-photo-label">Formula Bharat · Race Car</span>
+    </div>
+    <div class="about-photo-item">
+      <img src="images/photo2.jpg" alt="Underwater Drone">
+      <span class="about-photo-label">Underwater Drone · R&D</span>
+    </div>
+    <div class="about-photo-item">
+      <img src="images/photo3.jpg" alt="CAD Design Work">
+      <span class="about-photo-label">CAD Design · SolidWorks</span>
+    </div>
+    <div class="about-photo-item">
+      <img src="images/photo4.jpg" alt="Team at Competition">
+      <span class="about-photo-label">Team RGIT Racing · Mumbai</span>
+    </div>
+  </div>
     </div>
   </div>
 </section>
@@ -948,7 +982,7 @@
       </div>
       <div class="contact-item">
         <span class="contact-label">LinkedIn</span>
-        <span class="contact-value">https://www.linkedin.com/in/rudraksh-mali1975/i</span>
+        <span class="contact-value">linkedin.com/in/rudraksh-mali1975</span>
       </div>
       <div class="contact-item">
         <span class="contact-label">Location</span>
@@ -961,7 +995,7 @@
     </div>
     <div class="contact-actions reveal reveal-delay-3">
       <a href="mailto:rudrakshmali1@gmail.com" class="btn-primary">Send Email →</a>
-      <a href="#" class="btn-outline" onclick="alert('Add your CV PDF link here.')">Download CV</a>
+     <a href="Rudraksh_Mali_CV.pdf" class="btn-outline">Download CV</a>
       <a href="https://www.linkedin.com/in/rudraksh-mali1975/" target="_blank" class="btn-outline">View LinkedIn</a>
     </div>
   </div>
