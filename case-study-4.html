@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Multi-Directional Loading Bay | Rudraksh Mali</title>
-<meta name="description" content="Case study: Multi-Directional Rotating Loading Bay — Final Year Project. CAD modelling, FEA validation, manufactured prototype.">
+<title>Amora Collective — Product Redesign | Rudraksh Mali</title>
+<meta name="description" content="Case study: Product Design Internship at Amora Collective. Product redesign, DFM, manufacturing feasibility.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -22,7 +22,8 @@
   .nav-back { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: var(--steel); text-decoration: none; transition: color 0.2s; }
   .nav-back:hover { color: var(--navy); }
 
-  .cs-hero { min-height: 75vh; background: #0a2818; display: flex; flex-direction: column; justify-content: flex-end; padding: 8rem 4rem 4rem; position: relative; overflow: hidden; }
+  /* HERO */
+  .cs-hero { min-height: 75vh; background: #0f1f2e; display: flex; flex-direction: column; justify-content: flex-end; padding: 8rem 4rem 4rem; position: relative; overflow: hidden; }
   .cs-hero-bg { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px); background-size: 60px 60px; }
   .cs-hero-inner { max-width: 900px; position: relative; z-index: 2; }
   .cs-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: #34D399; margin-bottom: 1.25rem; }
@@ -32,6 +33,21 @@
   .cs-meta-label { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: #34D399; margin-bottom: 0.3rem; }
   .cs-meta-value { font-size: 0.88rem; color: rgba(255,255,255,0.6); }
 
+  /* ONGOING BADGE */
+  .ongoing-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(52,211,153,0.12); border: 1px solid rgba(52,211,153,0.3);
+    color: #34D399; padding: 0.4rem 1rem; border-radius: 20px;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
+    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem;
+  }
+  .ongoing-badge::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: #34D399; animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+  /* CONTENT */
   .cs-content { max-width: 900px; margin: 0 auto; padding: 5rem 4rem; }
   .cs-section { margin-bottom: 5rem; }
   .cs-section-label { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
@@ -43,6 +59,7 @@
   .cs-body ul { padding-left: 1.5rem; margin-bottom: 1.25rem; }
   .cs-body ul li { margin-bottom: 0.5rem; }
 
+  /* RESULT BOXES */
   .result-box { background: var(--white); border: 1px solid var(--grey-light); border-left: 3px solid var(--green); border-radius: 4px; padding: 1.5rem 2rem; margin-bottom: 1rem; }
   .result-box .rb-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--navy); line-height: 1; }
   .result-box .rb-label { font-size: 0.82rem; color: var(--steel); margin-top: 0.25rem; }
@@ -51,16 +68,18 @@
   /* GALLERY */
   .gallery { margin: 2.5rem 0; }
   .gallery-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--steel); margin-bottom: 1rem; }
-  .gallery-hero { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #0a2818 0%, #0d4a2a 100%); border-radius: 6px; overflow: hidden; margin-bottom: 1rem; position: relative; }
+  .gallery-hero { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #0f1f2e 0%, #1a3a2a 100%); border-radius: 6px; overflow: hidden; margin-bottom: 1rem; position: relative; }
   .gallery-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .gallery-hero .img-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; color: rgba(255,255,255,0.2); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.08em; }
   .gallery-hero .img-placeholder svg { opacity: 0.3; }
   .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
-  .gallery-thumb { aspect-ratio: 4/3; background: linear-gradient(135deg, #0a2818 0%, #0d4a2a 100%); border-radius: 4px; overflow: hidden; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; position: relative; }
+  .gallery-thumb { aspect-ratio: 4/3; background: linear-gradient(135deg, #0f1f2e 0%, #1a3a2a 100%); border-radius: 4px; overflow: hidden; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; position: relative; }
   .gallery-thumb:hover { transform: scale(1.02); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
   .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .gallery-thumb .img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.2); font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.06em; text-align: center; padding: 0.5rem; }
   .gallery-caption { font-size: 0.78rem; color: var(--steel); margin-top: 0.4rem; font-style: italic; }
+
+  /* LIGHTBOX */
   .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 999; align-items: center; justify-content: center; padding: 2rem; }
   .lightbox.open { display: flex; }
   .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 4px; }
@@ -68,22 +87,32 @@
   .lightbox-close:hover { opacity: 1; }
   .lightbox-caption { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.5); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.06em; white-space: nowrap; }
 
+  /* PROCESS STEPS */
   .process-step { display: flex; gap: 1.5rem; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--grey-light); }
   .process-step:last-child { border-bottom: none; }
   .process-step-num { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--green); min-width: 28px; padding-top: 0.15rem; }
   .process-step-content h4 { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; }
   .process-step-content p { font-size: 0.88rem; color: var(--steel); line-height: 1.65; }
 
+  /* DECISION CARDS */
   .decision-card { background: var(--white); border: 1px solid var(--grey-light); border-radius: 4px; padding: 1.75rem; margin-bottom: 1rem; }
   .decision-title { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
   .decision-body { font-size: 0.88rem; color: var(--steel); line-height: 1.65; }
 
-  .lesson-item { display: flex; gap: 1rem; margin-bottom: 1.25rem; }
-  .lesson-num { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--green); min-width: 24px; padding-top: 0.2rem; }
-  .lesson-text { font-size: 0.92rem; color: #3A3A4A; line-height: 1.7; }
+  /* IN PROGRESS BANNER */
+  .in-progress-banner {
+    background: rgba(52,211,153,0.06); border: 1px solid rgba(52,211,153,0.2);
+    border-radius: 4px; padding: 1.5rem 2rem; margin-bottom: 2rem;
+    display: flex; align-items: flex-start; gap: 1rem;
+  }
+  .in-progress-banner .ipb-icon { font-size: 1.25rem; flex-shrink: 0; }
+  .in-progress-banner .ipb-text { font-size: 0.88rem; color: var(--steel); line-height: 1.65; }
+  .in-progress-banner .ipb-text strong { color: var(--navy); font-weight: 600; }
 
+  /* SKILL CHIPS */
   .skill-chip { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.06em; padding: 0.35rem 0.75rem; background: var(--offwhite); color: var(--steel); border-radius: 2px; display: inline-block; margin: 0.25rem; }
 
+  /* FOOTER NAV */
   .cs-nav-footer { display: flex; justify-content: space-between; align-items: center; padding: 3rem 0 1rem; border-top: 1px solid var(--grey-light); margin-top: 4rem; }
   .cs-nav-link { text-decoration: none; display: flex; flex-direction: column; gap: 0.25rem; }
   .cs-nav-link .cnl-label { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--steel); }
@@ -92,6 +121,7 @@
   .back-btn { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); text-decoration: none; border-bottom: 1.5px solid var(--blue); padding-bottom: 2px; transition: color 0.2s; }
   .back-btn:hover { color: var(--blue); }
 
+  /* REVEAL */
   .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
@@ -109,28 +139,36 @@
   </a>
 </nav>
 
+<!-- HERO -->
 <div class="cs-hero">
   <div class="cs-hero-bg"></div>
   <div class="cs-hero-inner">
-    <p class="cs-eyebrow">Project 04 · Final Year Project · Mechanical Engineering</p>
-    <h1 class="cs-title">Multi-Directional<br>Rotating Loading Bay</h1>
-    <p class="cs-subtitle">Final year design project engineering a novel multi-directional rotating loading bay mechanism — from CAD concept through FEA validation to a working manufactured prototype.</p>
+    <div class="ongoing-badge">Ongoing · Started June 2025</div>
+    <p class="cs-eyebrow">Project 04 · Product Design · Internship</p>
+    <h1 class="cs-title">Product Redesign —<br>Amora Collective</h1>
+    <p class="cs-subtitle">Product design internship focused on redesigning existing products with DFM principles, manufacturing feasibility analysis, and production process improvement — bridging design intent with real manufacturing constraints.</p>
     <div class="cs-meta">
-      <div class="cs-meta-item"><p class="cs-meta-label">Type</p><p class="cs-meta-value">Final Year Project (FYP)</p></div>
-      <div class="cs-meta-item"><p class="cs-meta-label">Degree</p><p class="cs-meta-value">BE Mechanical Engineering</p></div>
-      <div class="cs-meta-item"><p class="cs-meta-label">Deliverables</p><p class="cs-meta-value">CAD model · FEA · Working prototype</p></div>
-      <div class="cs-meta-item"><p class="cs-meta-label">Application</p><p class="cs-meta-value">Logistics & materials handling</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Role</p><p class="cs-meta-value">Product Design Intern</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Organisation</p><p class="cs-meta-value">Amora Collective</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Started</p><p class="cs-meta-value">June 2025 · Ongoing</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Focus</p><p class="cs-meta-value">Product Redesign · DFM · Manufacturing</p></div>
     </div>
   </div>
 </div>
 
+<!-- CONTENT -->
 <div class="cs-content">
 
+  <!-- STATUS BANNER -->
   <div class="cs-section reveal">
+    <div class="in-progress-banner">
+      <span class="ipb-icon">🔧</span>
+      <p class="ipb-text"><strong>This project is currently in progress.</strong> This case study reflects work completed to date. Outcomes, results, and key decisions will be updated as the internship progresses and deliverables are completed.</p>
+    </div>
     <div class="results-grid">
-      <div class="result-box"><div class="rb-num">FEA</div><div class="rb-label">Structural validation with ANSYS</div></div>
-      <div class="result-box"><div class="rb-num">Built</div><div class="rb-label">Working physical prototype</div></div>
-      <div class="result-box"><div class="rb-num">360°</div><div class="rb-label">Multi-axis rotation capability</div></div>
+      <div class="result-box"><div class="rb-num">DFM</div><div class="rb-label">Design for manufacturability focus</div></div>
+      <div class="result-box"><div class="rb-num">Live</div><div class="rb-label">Active internship · June 2025</div></div>
+      <div class="result-box"><div class="rb-num">R&D</div><div class="rb-label">Product redesign for production</div></div>
     </div>
   </div>
 
@@ -138,159 +176,161 @@
   <div class="cs-section reveal">
     <div class="gallery">
       <p class="gallery-label">Project Gallery</p>
+
+      <!-- ═══════════════════════════════════════════════════════
+           MAIN HERO IMAGE
+           When you have photos, replace the placeholder:
+           <img src="images/amora-main.jpg" alt="Amora Collective — product redesign">
+           ═══════════════════════════════════════════════════════ -->
       <div class="gallery-hero">
         <div class="img-placeholder">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span>[ Add main project photo — CAD render or prototype ]</span>
+          <span>[ Add main product photo here ]</span>
         </div>
-        <!-- <img src="images/bay-main.jpg" alt="Multi-directional loading bay — main view"> -->
+        <!-- <img src="images/amora-main.jpg" alt="Amora Collective product redesign"> -->
       </div>
+
       <div class="gallery-grid">
         <div class="gallery-thumb" onclick="openLightbox(this)">
-          <div class="img-placeholder">[ CAD model — full ]</div>
-          <!-- <img src="images/bay-cad-full.jpg" alt="CAD model full view"> -->
+          <div class="img-placeholder">[ Original product ]</div>
+          <!-- <img src="images/amora-original.jpg" alt="Original product"> -->
         </div>
         <div class="gallery-thumb" onclick="openLightbox(this)">
-          <div class="img-placeholder">[ FEA stress map ]</div>
-          <!-- <img src="images/bay-fea.jpg" alt="FEA stress analysis"> -->
+          <div class="img-placeholder">[ CAD redesign ]</div>
+          <!-- <img src="images/amora-cad.jpg" alt="CAD redesign"> -->
         </div>
         <div class="gallery-thumb" onclick="openLightbox(this)">
-          <div class="img-placeholder">[ Mechanism detail ]</div>
-          <!-- <img src="images/bay-mechanism.jpg" alt="Rotation mechanism detail"> -->
+          <div class="img-placeholder">[ DFM analysis ]</div>
+          <!-- <img src="images/amora-dfm.jpg" alt="DFM analysis"> -->
         </div>
         <div class="gallery-thumb" onclick="openLightbox(this)">
-          <div class="img-placeholder">[ Fabrication process ]</div>
-          <!-- <img src="images/bay-fab.jpg" alt="Fabrication process"> -->
+          <div class="img-placeholder">[ Manufacturing detail ]</div>
+          <!-- <img src="images/amora-mfg.jpg" alt="Manufacturing detail"> -->
         </div>
         <div class="gallery-thumb" onclick="openLightbox(this)">
-          <div class="img-placeholder">[ Assembled prototype ]</div>
-          <!-- <img src="images/bay-prototype.jpg" alt="Assembled prototype"> -->
+          <div class="img-placeholder">[ Prototype / sample ]</div>
+          <!-- <img src="images/amora-prototype.jpg" alt="Prototype or sample"> -->
         </div>
         <div class="gallery-thumb" onclick="openLightbox(this)">
-          <div class="img-placeholder">[ Testing in use ]</div>
-          <!-- <img src="images/bay-testing.jpg" alt="Prototype testing"> -->
+          <div class="img-placeholder">[ Final redesign ]</div>
+          <!-- <img src="images/amora-final.jpg" alt="Final redesign"> -->
         </div>
       </div>
-      <p class="gallery-caption">BE Mechanical Engineering · Final Year Project</p>
+      <p class="gallery-caption">Amora Collective · Product Design Internship · 2025</p>
     </div>
   </div>
 
+  <!-- CONTEXT -->
   <div class="cs-section reveal">
-    <p class="cs-section-label">01 · Problem</p>
-    <h2 class="cs-section-heading">The Challenge</h2>
+    <p class="cs-section-label">01 · Context</p>
+    <h2 class="cs-section-heading">The Brief</h2>
     <div class="cs-body">
-      <p>Conventional loading bays are constrained to fixed orientations — limiting their flexibility in logistics environments where goods must be handled from multiple directions. The project brief required the design and engineering of a <strong>multi-directional rotating loading bay</strong> capable of receiving and dispatching loads from different approach angles.</p>
-      <p>The challenge was both mechanical — designing a rotation mechanism that could support the required load while enabling smooth, controlled multi-axis movement — and structural: ensuring the platform could withstand operational loads without fatigue failure or excessive deflection.</p>
+      <p>Amora Collective is a product company with an existing range of products. The internship brief centres on <strong>redesigning existing products</strong> to improve their manufacturability, reduce production complexity, and align design intent more closely with manufacturing reality.</p>
+      <p>This is applied product development work — not academic. Every design decision has a direct implication for how the product is made, what it costs to produce, and how consistently it can be manufactured at scale.</p>
     </div>
   </div>
 
+  <!-- ROLE -->
   <div class="cs-section reveal">
-    <p class="cs-section-label">02 · Constraints</p>
-    <h2 class="cs-section-heading">Engineering Constraints</h2>
-    <div class="cs-body">
-      <ul>
-        <li><strong>Load capacity:</strong> Platform required to support defined static and dynamic load cases representative of logistics handling</li>
-        <li><strong>Deflection limits:</strong> Maximum allowable deflection under full load to maintain safe operation</li>
-        <li><strong>Factor of safety:</strong> Minimum FoS defined for all structural members under worst-case loading</li>
-        <li><strong>Manufacturability:</strong> Prototype to be built in university workshop using standard materials and processes</li>
-        <li><strong>Compactness:</strong> Mechanism required to fit within defined envelope constraints</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="cs-section reveal">
-    <p class="cs-section-label">03 · Design Process</p>
-    <h2 class="cs-section-heading">Concept to Prototype</h2>
+    <p class="cs-section-label">02 · Role & Responsibilities</p>
+    <h2 class="cs-section-heading">What I Am Working On</h2>
     <div class="process-step">
       <span class="process-step-num">01</span>
       <div class="process-step-content">
-        <h4>Mechanism concept generation</h4>
-        <p>Explored multiple mechanisms for achieving multi-directional rotation — including turntable bearings, crossed-roller arrangements, and segmented track systems. Each was evaluated against load capacity, compactness, and manufacturability criteria.</p>
+        <h4>Product redesign</h4>
+        <p>Analysing existing product designs and developing redesigned versions that maintain or improve function while simplifying the manufacturing process and reducing production complexity.</p>
       </div>
     </div>
     <div class="process-step">
       <span class="process-step-num">02</span>
       <div class="process-step-content">
-        <h4>CAD development in SolidWorks</h4>
-        <p>Selected concept developed into a full 3D assembly model with all components, fasteners, and interfaces defined. Assembly-level clearance checks confirmed the mechanism would function through its full range of motion without interference.</p>
+        <h4>DFM analysis</h4>
+        <p>Applying Design for Manufacture principles to identify features that are difficult or costly to produce, and proposing design changes that achieve the same functional outcome through more manufacturable geometry or process choices.</p>
       </div>
     </div>
     <div class="process-step">
       <span class="process-step-num">03</span>
       <div class="process-step-content">
-        <h4>FEA structural validation</h4>
-        <p>ANSYS Mechanical used to run static structural analyses across the defined load cases. Stress and deflection results mapped across all components, with high-stress regions identified for design review. All structural members confirmed above minimum FoS requirements.</p>
+        <h4>Manufacturing feasibility</h4>
+        <p>Reviewing designs against manufacturing process capabilities — assessing tolerances, material choices, and assembly sequences to ensure designs are producible within the company's manufacturing constraints.</p>
       </div>
     </div>
     <div class="process-step">
       <span class="process-step-num">04</span>
       <div class="process-step-content">
-        <h4>Prototype manufacture</h4>
-        <p>Workshop drawings generated from the CAD model and submitted for fabrication. Prototype manufactured using CNC machining, manual turning, and standard fasteners. Assembly completed and validated against the CAD model.</p>
-      </div>
-    </div>
-    <div class="process-step">
-      <span class="process-step-num">05</span>
-      <div class="process-step-content">
-        <h4>Testing and validation</h4>
-        <p>Physical prototype tested under representative loading conditions. Measured deflection values compared against FEA predictions — confirming model accuracy and structural adequacy.</p>
+        <h4>Design iteration and review</h4>
+        <p>Working iteratively with the team — proposing changes, receiving feedback, and refining designs through structured review cycles typical of a professional product development environment.</p>
       </div>
     </div>
   </div>
 
+  <!-- APPROACH -->
   <div class="cs-section reveal">
-    <p class="cs-section-label">04 · Key Decisions</p>
-    <h2 class="cs-section-heading">Engineering Judgement</h2>
-    <div class="decision-card">
-      <p class="decision-title">Bearing selection</p>
-      <p class="decision-body">Selected a large-diameter slewing ring bearing as the primary rotation element — accepting higher unit cost compared to a fabricated track system, in exchange for significantly improved load capacity, compactness, and reliability. The commercial bearing also reduced manufacturing complexity substantially.</p>
-    </div>
-    <div class="decision-card">
-      <p class="decision-title">Platform material — steel vs aluminium</p>
-      <p class="decision-body">Chose mild steel structural sections for the platform frame rather than aluminium — the welding simplicity, cost, and stiffness-to-cost ratio of steel outweighing the weight saving from aluminium in this application, where weight is not a performance driver.</p>
-    </div>
-    <div class="decision-card">
-      <p class="decision-title">FEA mesh refinement strategy</p>
-      <p class="decision-body">Applied locally refined mesh at weld joint locations and areas of geometric stress concentration, rather than globally refining the mesh — achieving accurate stress results at critical locations without the computational cost of a fully fine mesh.</p>
-    </div>
-  </div>
-
-  <div class="cs-section reveal">
-    <p class="cs-section-label">05 · Results</p>
-    <h2 class="cs-section-heading">What Was Delivered</h2>
+    <p class="cs-section-label">03 · Engineering Approach</p>
+    <h2 class="cs-section-heading">How I Am Approaching It</h2>
     <div class="cs-body">
-      <p>The project delivered three key outputs: a complete <strong>SolidWorks CAD assembly</strong> with full engineering drawings, an <strong>ANSYS FEA validation report</strong> confirming structural adequacy across all load cases, and a <strong>working physical prototype</strong> demonstrating multi-directional rotation under load.</p>
-      <p>Measured test deflections compared well against FEA predictions, validating both the modelling approach and the structural design. The prototype demonstrated smooth, controlled rotation in multiple directions — meeting the original design brief.</p>
+      <p>The starting point for any redesign is understanding <strong>why</strong> the current design is the way it is — what constraints shaped it, what problems it solves, and where the manufacturing friction comes from. Jumping to a solution without this understanding risks creating new problems while solving old ones.</p>
+      <p>DFM is not just about simplifying geometry. It requires understanding the full manufacturing context: which processes are available, what tolerances are achievable, how the product is assembled, and where variation in production will cause quality issues. Good DFM reduces cost and improves consistency without compromising the product's intended function or user experience.</p>
     </div>
   </div>
 
+  <!-- KEY DECISIONS -->
   <div class="cs-section reveal">
-    <p class="cs-section-label">06 · Lessons Learned</p>
-    <h2 class="cs-section-heading">What I Took Away</h2>
-    <div class="lesson-item">
-      <span class="lesson-num">01</span>
-      <p class="lesson-text"><strong>The gap between CAD and manufacture is real.</strong> Tolerances that look fine in SolidWorks can be challenging to achieve in a workshop. Building the prototype taught me to design with tighter awareness of practical manufacturing limits.</p>
+    <p class="cs-section-label">04 · Engineering Judgement</p>
+    <h2 class="cs-section-heading">Key Decisions So Far</h2>
+    <div class="decision-card">
+      <p class="decision-title">Understanding before redesigning</p>
+      <p class="decision-body">Before proposing any design changes, time was invested in understanding the existing product's manufacturing process end to end — identifying where production friction actually occurs rather than assuming where problems might be.</p>
     </div>
-    <div class="lesson-item">
-      <span class="lesson-num">02</span>
-      <p class="lesson-text"><strong>FEA is a tool, not a guarantee.</strong> The validation process — comparing FEA predictions against physical measurements — demonstrated both the power and the limits of simulation. Boundary conditions and simplifications matter enormously.</p>
+    <div class="decision-card">
+      <p class="decision-title">DFM as a constraint, not an afterthought</p>
+      <p class="decision-body">Manufacturability considerations are being built into the redesign from the first concept sketch — not reviewed at the end. This avoids the common pattern of designing a product and then discovering it cannot be made as intended.</p>
     </div>
-    <div class="lesson-item">
-      <span class="lesson-num">03</span>
-      <p class="lesson-text"><strong>Complete the engineering story end-to-end.</strong> Taking a project from brief through design, analysis, manufacture, and physical test gave me a complete view of the product development cycle that no individual stage alone could provide.</p>
+    <div class="decision-card">
+      <p class="decision-title">Preserving design intent while improving production</p>
+      <p class="decision-body">The redesign brief requires improving manufacturability without losing what makes the product work or look right. This balance — between production efficiency and design integrity — is the central tension the work navigates.</p>
     </div>
   </div>
 
+  <!-- OUTCOMES — ONGOING -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">05 · Outcomes</p>
+    <h2 class="cs-section-heading">Results To Date</h2>
+    <div class="in-progress-banner">
+      <span class="ipb-icon">📋</span>
+      <p class="ipb-text">This internship is ongoing. Specific outcomes, delivered designs, and measurable results will be documented here as the work progresses and deliverables are completed and approved.</p>
+    </div>
+    <div class="cs-body">
+      <p>The internship started in June 2025 and is actively ongoing. The work to date has focused on understanding the existing product range, identifying DFM improvement opportunities, and beginning the redesign process in collaboration with the Amora Collective team.</p>
+    </div>
+  </div>
+
+  <!-- LESSONS -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">06 · Early Lessons</p>
+    <h2 class="cs-section-heading">What I Am Learning</h2>
+    <div class="cs-body">
+      <p><strong>Professional product design is iterative by nature.</strong> Every design goes through multiple review cycles before it is approved. The discipline of structured iteration — propose, review, refine — is what separates professional product development from a one-shot design exercise.</p>
+      <p><strong>DFM requires manufacturing knowledge, not just design knowledge.</strong> Understanding what is difficult to make requires understanding manufacturing processes deeply — not just in theory, but in terms of real process capabilities, tolerances, and failure modes.</p>
+      <p><strong>Communication is a design skill.</strong> Presenting design rationale clearly — explaining why a decision was made, not just what was decided — is as important as the design itself in a professional product development environment.</p>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
   <div class="cs-section reveal">
     <p class="cs-section-label">Skills Applied</p>
     <div>
-      <span class="skill-chip">SolidWorks</span><span class="skill-chip">ANSYS FEA</span>
-      <span class="skill-chip">Prototyping</span><span class="skill-chip">CNC Machining</span>
-      <span class="skill-chip">Engineering Drawings</span><span class="skill-chip">DFM</span>
-      <span class="skill-chip">Structural Analysis</span><span class="skill-chip">Testing & Validation</span>
+      <span class="skill-chip">Product Design</span>
+      <span class="skill-chip">DFM</span>
+      <span class="skill-chip">CAD</span>
+      <span class="skill-chip">Manufacturing Feasibility</span>
+      <span class="skill-chip">Design Iteration</span>
+      <span class="skill-chip">Technical Communication</span>
+      <span class="skill-chip">R&D Process</span>
     </div>
   </div>
 
+  <!-- FOOTER NAV -->
   <div class="cs-nav-footer reveal">
     <a href="case-study-3.html" class="cs-nav-link">
       <span class="cnl-label">← Previous</span>
@@ -298,8 +338,10 @@
     </a>
     <a href="index.html#projects" class="back-btn">Back to Portfolio →</a>
   </div>
+
 </div>
 
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
   <button class="lightbox-close" onclick="closeLightbox()">✕</button>
   <img id="lightbox-img" src="" alt="">
@@ -307,10 +349,23 @@
 </div>
 
 <script>
-  const observer = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.08 });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  function openLightbox(thumb) { const img = thumb.querySelector('img'); if (!img) return; document.getElementById('lightbox-img').src = img.src; document.getElementById('lightbox-cap').textContent = img.alt; document.getElementById('lightbox').classList.add('open'); }
-  function closeLightbox(e) { if (!e || e.target === document.getElementById('lightbox') || e.target.classList.contains('lightbox-close')) document.getElementById('lightbox').classList.remove('open'); }
+
+  function openLightbox(thumb) {
+    const img = thumb.querySelector('img');
+    if (!img) return;
+    document.getElementById('lightbox-img').src = img.src;
+    document.getElementById('lightbox-cap').textContent = img.alt;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox(e) {
+    if (!e || e.target === document.getElementById('lightbox') || e.target.classList.contains('lightbox-close')) {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+  }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open'); });
 </script>
 </body>
