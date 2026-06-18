@@ -1,231 +1,1007 @@
-<!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @rudraksh
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Massively by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rudraksh Mali | Mechanical Engineer</title>
+<meta name="description" content="Mechanical Engineer specialising in product development, CAD design, FEA analysis, manufacturing systems and engineering management.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A1628;
+    --navy-mid: #132040;
+    --offwhite: #F7F6F3;
+    --steel: #5C6B7A;
+    --blue: #2563EB;
+    --blue-light: #3B82F6;
+    --charcoal: #1A1A2E;
+    --grey-light: #E8E8E4;
+    --grey-mid: #9CA3AF;
+    --white: #ffffff;
+  }
 
-		<!-- Wrapper -->
-			<div id="wrapper" class="fade-in">
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-				<!-- Intro -->
-					<div id="intro">
-						<h1>Hello I'm<br />
-						Rudraksh</h1>
-						<p><p>
-Mechanical Engineer | MSc Engineering Management Student at Loughborough University | Formula Student Team Captain | Product Development & Manufacturing Enthusiast
-</p> <a href="https://www.linkedin.com/in/rudraksh-mali1975/">rudraksh mali</a> for <a href="https://html5up.net">HTML5 UP</a><br />
-						and released for free under the <a href="https://html5up.net/license">Creative Commons license</a>.</p>
-						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-					</div>
+  html { scroll-behavior: smooth; font-size: 16px; }
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">Massively</a>
-					</header>
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--offwhite);
+    color: var(--charcoal);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li class="active"><a href="index.html">This is Massively</a></li>
-							<li><a href="generic.html">Generic Page</a></li>
-							<li><a href="elements.html">Elements Reference</a></li>
-						</ul>
-						<ul class="icons">
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(247,246,243,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.07); }
 
-				<!-- Main -->
-					<div id="main">
+  .nav-logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--navy);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--steel);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--navy); }
+  .nav-cta {
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--white);
+    background: var(--navy); padding: 0.6rem 1.4rem;
+    border-radius: 3px; text-decoration: none; transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--blue); }
 
-						<!-- Featured Post -->
-							<article class="post featured">
-								<header class="major">
-									<span class="date">April 25, 2017</span>
-									<h2><a href="#">And this is a<br />
-									massive headline</a></h2>
-									<p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
-									facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
-									amet nullam sed etiam veroeros.</p>
-								</header>
-								<a href="#" class="image main"><img src="images/pic01.jpg" alt="" /></a>
-								<ul class="actions special">
-									<li><a href="#" class="button large">Full Story</a></li>
-								</ul>
-							</article>
+  /* ─── SECTION LABEL ─── */
+  .section-label {
+    display: flex; align-items: center; gap: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--blue); margin-bottom: 1.5rem;
+  }
+  .section-label::after {
+    content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--blue);
+  }
 
-						<!-- Posts -->
-							<section class="posts">
-								<article>
-									<header>
-										<span class="date">April 24, 2017</span>
-										<h2><a href="#">Sed magna<br />
-										ipsum faucibus</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 22, 2017</span>
-										<h2><a href="#">Primis eget<br />
-										imperdiet lorem</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 18, 2017</span>
-										<h2><a href="#">Ante mattis<br />
-										interdum dolor</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 14, 2017</span>
-										<h2><a href="#">Tempus sed<br />
-										nulla imperdiet</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 11, 2017</span>
-										<h2><a href="#">Odio magna<br />
-										sed consectetur</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 7, 2017</span>
-										<h2><a href="#">Augue lorem<br />
-										primis vestibulum</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-							</section>
+  /* Engineering tolerance line — the signature element */
+  .tol-line {
+    display: flex; align-items: center; gap: 0; margin-bottom: 2.5rem;
+  }
+  .tol-line .mark {
+    width: 8px; height: 8px; border: 1.5px solid var(--blue);
+    border-radius: 50%; flex-shrink: 0;
+  }
+  .tol-line .line {
+    flex: 1; height: 1px; background: linear-gradient(90deg, var(--blue) 0%, var(--grey-light) 100%);
+  }
 
-						<!-- Footer -->
-							<footer>
-								<div class="pagination">
-									<!--<a href="#" class="previous">Prev</a>-->
-									<a href="#" class="page active">1</a>
-									<a href="#" class="page">2</a>
-									<a href="#" class="page">3</a>
-									<span class="extra">&hellip;</span>
-									<a href="#" class="page">8</a>
-									<a href="#" class="page">9</a>
-									<a href="#" class="page">10</a>
-									<a href="#" class="next">Next</a>
-								</div>
-							</footer>
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh; background: var(--navy);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 4rem 5rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr 380px;
+    gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%;
+  }
 
-					</div>
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--blue-light); margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    font-weight: 700; line-height: 1.05;
+    color: var(--white); margin-bottom: 1rem;
+    opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
+  }
+  .hero-title {
+    font-size: 1.05rem; font-weight: 300; color: #8BA3C0;
+    letter-spacing: 0.01em; margin-bottom: 2rem;
+    opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
+  }
+  .hero-desc {
+    font-size: 1rem; font-weight: 300; line-height: 1.75;
+    color: #6B8CAD; max-width: 540px; margin-bottom: 2.5rem;
+    opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
+  }
+  .hero-actions {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--blue); color: var(--white);
+    padding: 0.75rem 1.75rem; border-radius: 3px;
+    font-size: 0.82rem; font-weight: 600; letter-spacing: 0.05em;
+    text-transform: uppercase; text-decoration: none; border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--blue-light); transform: translateY(-1px); }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.7);
+    padding: 0.75rem 1.75rem; border-radius: 3px;
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.05em;
+    text-transform: uppercase; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--white); color: var(--white); transform: translateY(-1px); }
 
-				<!-- Footer -->
-					<footer id="footer">
-						<section>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="text" name="email" id="email" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="3"></textarea>
-									</div>
-								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
-						</section>
-						<section class="split contact">
-							<section class="alt">
-								<h3>Address</h3>
-								<p>1234 Somewhere Road #87257<br />
-								Nashville, TN 00000-0000</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(000) 000-0000</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="#">info@untitled.tld</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer>
+  /* Photo */
+  .hero-photo-wrap {
+    opacity: 0; animation: fadeIn 1s 0.6s forwards;
+  }
+  .hero-photo {
+    width: 100%; aspect-ratio: 3/4;
+    background: linear-gradient(135deg, #132040 0%, #1e3a5f 50%, #132040 100%);
+    border-radius: 4px; position: relative; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .hero-photo .photo-label {
+    position: absolute; bottom: 1.25rem; left: 1.25rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem; color: rgba(255,255,255,0.35);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .hero-photo .photo-placeholder {
+    width: 100%; height: 100%; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 1rem;
+  }
+  .hero-photo .photo-icon {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem;
+  }
+  .hero-photo .photo-text {
+    font-size: 0.72rem; color: rgba(255,255,255,0.25);
+    font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em;
+  }
 
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
+  /* Hero decorative grid */
+  .hero-bg-grid {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
 
-			</div>
+  /* Scroll indicator */
+  .scroll-hint {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    opacity: 0; animation: fadeIn 1s 1.2s forwards;
+  }
+  .scroll-hint span {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
+    color: rgba(255,255,255,0.3); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .scroll-hint .arrow {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+    animation: scrollPulse 2s infinite;
+  }
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+  /* ─── SECTION WRAPPER ─── */
+  .section { padding: 7rem 4rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
 
-	</body>
+  .section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 600; color: var(--navy);
+    line-height: 1.2; margin-bottom: 0.75rem;
+  }
+  .section-sub {
+    font-size: 1rem; font-weight: 300; color: var(--steel); line-height: 1.7;
+    max-width: 520px; margin-bottom: 4rem;
+  }
+
+  /* ─── ABOUT ─── */
+  #about { background: var(--white); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;
+  }
+  .about-text p {
+    font-size: 1.02rem; line-height: 1.85; color: #3A3A4A;
+    font-weight: 300; margin-bottom: 1.5rem;
+  }
+  .about-text p strong { font-weight: 600; color: var(--navy); }
+  .about-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+  }
+  .stat-block {
+    padding: 1.5rem; background: var(--offwhite); border-radius: 4px;
+    border-left: 2px solid var(--blue);
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif; font-size: 2.25rem;
+    font-weight: 700; color: var(--navy); line-height: 1; margin-bottom: 0.4rem;
+  }
+  .stat-label { font-size: 0.78rem; color: var(--steel); font-weight: 500; letter-spacing: 0.02em; }
+  .about-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
+  .tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+    letter-spacing: 0.06em; color: var(--blue); background: #EEF3FF;
+    padding: 0.4rem 0.85rem; border-radius: 2px;
+  }
+
+  /* ─── PROJECTS ─── */
+  #projects { background: var(--offwhite); }
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .project-card {
+    background: var(--white); border-radius: 6px; overflow: hidden;
+    border: 1px solid var(--grey-light); transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .project-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
+  .project-card:first-child { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
+
+  .project-img {
+    width: 100%; aspect-ratio: 16/10;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%);
+    position: relative; overflow: hidden;
+  }
+  .project-card:first-child .project-img { aspect-ratio: auto; min-height: 320px; }
+
+  .project-img-inner {
+    width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .project-img-label {
+    position: absolute; bottom: 1rem; left: 1rem;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.6rem;
+    color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+
+  /* Unique visual per project */
+  .proj-visual { opacity: 0.15; }
+  .proj1 { background: linear-gradient(135deg, #0A1628 0%, #1e3a5f 60%, #0A1628 100%); }
+  .proj2 { background: linear-gradient(135deg, #0d2137 0%, #0a3d62 60%, #0d2137 100%); }
+  .proj3 { background: linear-gradient(135deg, #1a0a28 0%, #2d1a4f 60%, #1a0a28 100%); }
+  .proj4 { background: linear-gradient(135deg, #0a2818 0%, #0d4a2a 60%, #0a2818 100%); }
+
+  .project-body { padding: 2rem 2.25rem 2.5rem; }
+  .project-card:first-child .project-body { padding: 2.5rem 2.5rem 3rem; display: flex; flex-direction: column; justify-content: center; }
+
+  .project-num {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
+    color: var(--blue); letter-spacing: 0.1em; margin-bottom: 0.75rem;
+  }
+  .project-title {
+    font-family: 'Playfair Display', serif; font-size: 1.45rem;
+    font-weight: 600; color: var(--navy); line-height: 1.25; margin-bottom: 0.75rem;
+  }
+  .project-card:first-child .project-title { font-size: 1.8rem; }
+
+  .project-desc { font-size: 0.92rem; line-height: 1.7; color: var(--steel); margin-bottom: 1.5rem; font-weight: 300; }
+  .project-result {
+    display: flex; align-items: flex-start; gap: 0.6rem;
+    font-size: 0.85rem; color: var(--navy); font-weight: 500; margin-bottom: 0.5rem;
+  }
+  .project-result::before { content: '→'; color: var(--blue); flex-shrink: 0; }
+  .project-skills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1.25rem 0; }
+  .skill-chip {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
+    letter-spacing: 0.06em; padding: 0.3rem 0.7rem;
+    background: var(--offwhite); color: var(--steel); border-radius: 2px;
+  }
+  .btn-case {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    margin-top: 1.5rem; font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy);
+    text-decoration: none; border-bottom: 1.5px solid var(--blue);
+    padding-bottom: 2px; transition: color 0.2s, gap 0.2s;
+  }
+  .btn-case:hover { color: var(--blue); gap: 0.75rem; }
+
+  /* ─── EXPERIENCE ─── */
+  #experience { background: var(--navy); }
+  #experience .section-heading { color: var(--white); }
+  #experience .section-sub { color: #6B8CAD; }
+  #experience .section-label { color: var(--blue-light); }
+  #experience .section-label::after { background: var(--blue-light); }
+
+  .timeline { position: relative; padding-left: 2.5rem; }
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: 8px; bottom: 8px;
+    width: 1px; background: linear-gradient(to bottom, var(--blue), rgba(37,99,235,0.1));
+  }
+  .timeline-item { position: relative; padding-bottom: 3.5rem; }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-dot {
+    position: absolute; left: -2.5rem; top: 6px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--blue); border: 2px solid var(--navy);
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+  }
+  .timeline-date {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+    letter-spacing: 0.08em; color: var(--blue-light); margin-bottom: 0.6rem;
+  }
+  .timeline-role {
+    font-family: 'Playfair Display', serif; font-size: 1.25rem;
+    font-weight: 600; color: var(--white); margin-bottom: 0.25rem;
+  }
+  .timeline-org { font-size: 0.88rem; color: #6B8CAD; margin-bottom: 1rem; }
+  .timeline-points { list-style: none; }
+  .timeline-points li {
+    font-size: 0.88rem; color: #8BA3C0; line-height: 1.65; padding-bottom: 0.4rem;
+    padding-left: 1.2rem; position: relative;
+  }
+  .timeline-points li::before {
+    content: '–'; position: absolute; left: 0; color: var(--blue);
+  }
+
+  /* ─── SKILLS ─── */
+  #skills { background: var(--white); }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .skill-cat {
+    padding: 2rem; background: var(--offwhite); border-radius: 4px;
+    border-top: 2px solid var(--blue);
+  }
+  .skill-cat-title {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue);
+    margin-bottom: 1.25rem;
+  }
+  .skill-list { list-style: none; }
+  .skill-list li {
+    font-size: 0.9rem; color: var(--navy); font-weight: 400;
+    padding: 0.5rem 0; border-bottom: 1px solid var(--grey-light);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .skill-list li:last-child { border-bottom: none; }
+  .skill-list li::before { content: ''; width: 4px; height: 4px; background: var(--blue); border-radius: 50%; flex-shrink: 0; }
+
+  /* ─── PHILOSOPHY ─── */
+  #philosophy { background: var(--offwhite); padding: 7rem 4rem; }
+  .philosophy-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+  .philosophy-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+    font-weight: 400; line-height: 1.6; color: var(--navy);
+    margin-bottom: 2rem; font-style: italic;
+  }
+  .philosophy-body {
+    font-size: 0.98rem; line-height: 1.85; color: var(--steel); font-weight: 300;
+    max-width: 680px; margin: 0 auto;
+  }
+  .philosophy-divider {
+    width: 40px; height: 2px; background: var(--blue);
+    margin: 2.5rem auto; border-radius: 1px;
+  }
+
+  /* ─── ACHIEVEMENTS ─── */
+  #achievements { background: var(--white); }
+  .achievements-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .achievement-card {
+    padding: 2.25rem 1.75rem; background: var(--offwhite); border-radius: 4px;
+    border-bottom: 2px solid transparent; transition: border-color 0.3s, transform 0.3s;
+  }
+  .achievement-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+  .achievement-icon { font-size: 1.75rem; margin-bottom: 1rem; }
+  .achievement-title {
+    font-family: 'Playfair Display', serif; font-size: 1.05rem;
+    font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; line-height: 1.3;
+  }
+  .achievement-desc { font-size: 0.82rem; color: var(--steel); line-height: 1.6; }
+
+  /* ─── CONTACT ─── */
+  #contact { background: var(--navy); padding: 8rem 4rem; }
+  .contact-inner { max-width: 900px; margin: 0 auto; }
+  #contact .section-label { color: var(--blue-light); }
+  #contact .section-label::after { background: var(--blue-light); }
+  .contact-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.25rem, 4vw, 3.5rem);
+    font-weight: 600; color: var(--white); line-height: 1.15; margin-bottom: 1.25rem;
+  }
+  .contact-sub { font-size: 1rem; color: #6B8CAD; line-height: 1.7; max-width: 540px; margin-bottom: 3.5rem; font-weight: 300; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .contact-item { display: flex; flex-direction: column; gap: 0.3rem; }
+  .contact-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-light);
+  }
+  .contact-value {
+    font-size: 0.95rem; color: rgba(255,255,255,0.7); font-weight: 300;
+  }
+  .contact-actions { display: flex; gap: 1rem; margin-top: 3rem; flex-wrap: wrap; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #060E1C; padding: 2rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-logo {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;
+    color: rgba(255,255,255,0.3); letter-spacing: 0.06em;
+  }
+  .footer-note { font-size: 0.75rem; color: rgba(255,255,255,0.2); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ─── SVG ILLUSTRATIONS ─── */
+  .chassis-svg, .drone-svg, .cloud-svg, .bay-svg {
+    width: 100%; height: 100%; position: absolute; inset: 0;
+  }
+
+  /* ─── MOBILE NAV ─── */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 22px; height: 2px; background: var(--navy); transition: 0.3s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 1.1rem 1.5rem; }
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex; flex-direction: column; gap: 1.5rem;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--offwhite); padding: 6rem 2rem 2rem;
+      z-index: 99;
+    }
+    .nav-links.open a { font-size: 1.1rem; }
+    .hamburger { display: flex; z-index: 101; }
+    .nav-cta { display: none; }
+
+    #hero { padding: 6rem 1.5rem 4rem; }
+    .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-photo-wrap { order: -1; }
+    .hero-photo { max-height: 260px; aspect-ratio: auto; }
+
+    .section { padding: 4.5rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card:first-child { display: block; }
+    .project-card:first-child .project-img { aspect-ratio: 16/10; min-height: auto; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .achievements-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    #contact { padding: 5rem 1.5rem; }
+    footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+  @media (max-width: 540px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    .achievements-grid { grid-template-columns: 1fr; }
+    .about-stats { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1 !important; transform: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">RM / Portfolio</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in Touch</a>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-grid">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Mechanical Engineer · MSc Engineering Management</p>
+      <h1 class="hero-name">Rudraksh<br>Mali</h1>
+      <p class="hero-title">Mechanical Engineer | Engineering Management MSc Student</p>
+      <p class="hero-desc">Designing products, leading engineering teams, and solving complex manufacturing challenges through engineering, systems thinking, and product development.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Get in Touch
+        </a>
+        <a href="#" class="btn-outline" onclick="alert('Resume download — add your PDF link here.')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download CV
+        </a>
+        <a href="https://www.linkedin.com/in/rudraksh-mali1975/" target="_blank" class="btn-outline">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo">
+  <img src="images/profile.jpg" alt="Rudraksh Mali" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
+  <span class="photo-label">Rudraksh Mali · Loughborough, UK</span>
+</div>
+        </div>
+        <span class="photo-label">Rudraksh Mali · Loughborough, UK</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="section-inner">
+    <div class="section-label reveal">About</div>
+    <div class="tol-line reveal reveal-delay-1"><div class="mark"></div><div class="line"></div></div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <h2 class="section-heading" style="margin-bottom:1.5rem">Engineering ambition,<br>management depth.</h2>
+        <p>I am a <strong>Mechanical Engineer</strong> currently completing an <strong>MSc in Engineering Management</strong> at Loughborough University — one of the UK's top engineering institutions. My background spans competitive motorsport, R&D internships, and advanced dissertation research in manufacturing systems.</p>
+        <p>What drives me is the intersection of technical rigour and strategic decision-making: understanding not just how to engineer a solution, but how to deliver it on time, within budget, and at production quality. I have led cross-functional engineering teams, managed budgets, and taken concepts from CAD to physical prototype.</p>
+        <p>I am particularly interested in <strong>advanced manufacturing</strong>, <strong>product development</strong>, and <strong>Industry 4.0</strong> — areas where engineering precision and systems thinking combine to create lasting competitive advantage.</p>
+        <div class="about-tags">
+          <span class="tag">SolidWorks</span><span class="tag">ANSYS FEA</span><span class="tag">DFM</span>
+          <span class="tag">Team Leadership</span><span class="tag">Additive Mfg</span><span class="tag">Systems Engineering</span>
+          <span class="tag">Product Development</span><span class="tag">Industry 4.0</span>
+        </div>
+      </div>
+      <div class="about-stats reveal reveal-delay-2">
+        <div class="stat-block">
+          <div class="stat-num">25</div>
+          <div class="stat-label">Engineers Led as Team Captain</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">9th</div>
+          <div class="stat-label">All India Rank · Formula Bharat</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">23%</div>
+          <div class="stat-label">Weight Reduction on Chassis</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">3×</div>
+          <div class="stat-label">Consecutive Years as Team Captain</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section">
+  <div class="section-inner">
+    <div class="section-label reveal">Featured Projects</div>
+    <div class="tol-line reveal reveal-delay-1"><div class="mark"></div><div class="line"></div></div>
+    <h2 class="section-heading reveal">Work that speaks<br>for itself.</h2>
+    <p class="section-sub reveal reveal-delay-1">A selection of engineering projects spanning motorsport, R&D, manufacturing systems, and product design.</p>
+
+    <div class="projects-grid">
+
+      <!-- PROJECT 1 — FEATURED -->
+      <div class="project-card reveal">
+        <div class="project-img proj1">
+          <div class="project-img-inner">
+            <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0;opacity:0.18">
+              <!-- Racing car chassis wireframe -->
+              <line x1="80" y1="160" x2="520" y2="160" stroke="#2563EB" stroke-width="1"/>
+              <ellipse cx="160" cy="200" rx="50" ry="25" fill="none" stroke="#2563EB" stroke-width="1.2"/>
+              <ellipse cx="440" cy="200" rx="50" ry="25" fill="none" stroke="#2563EB" stroke-width="1.2"/>
+              <polyline points="160,175 200,130 400,130 440,175" fill="none" stroke="#2563EB" stroke-width="1.2"/>
+              <polyline points="200,130 300,90 400,130" fill="none" stroke="#2563EB" stroke-width="0.8"/>
+              <line x1="300" y1="90" x2="300" y2="200" stroke="#2563EB" stroke-width="0.5" stroke-dasharray="6,4"/>
+              <line x1="200" y1="155" x2="440" y2="155" stroke="#3B82F6" stroke-width="0.8"/>
+              <circle cx="160" cy="200" r="4" fill="#2563EB"/>
+              <circle cx="440" cy="200" r="4" fill="#2563EB"/>
+              <circle cx="300" cy="90" r="3" fill="#3B82F6"/>
+              <text x="540" y="165" fill="#2563EB" font-size="9" font-family="monospace">CL</text>
+              <text x="300" y="75" fill="#3B82F6" font-size="8" font-family="monospace">ref pt.</text>
+            </svg>
+          </div>
+          <span class="project-img-label">[ Project visual — add render/photo ]</span>
+        </div>
+        <div class="project-body">
+          <p class="project-num">Project 01 · Motorsport Engineering</p>
+          <h3 class="project-title">Formula Bharat Race Car — Chassis Optimisation</h3>
+          <p class="project-desc">Led a 25-member multidisciplinary team as Team Captain to design, validate, and compete with a Formula Student race car. Responsible for chassis architecture, FEA-driven optimisation, and full competition strategy. Achieved All India Rank 9.</p>
+          <div class="project-result">Reduced chassis weight from 40 kg to 31 kg (22.5% reduction)</div>
+          <div class="project-result">All India Rank 9 at Formula Bharat</div>
+          <div class="project-result">Led team budget planning and supplier management</div>
+          <div class="project-skills">
+            <span class="skill-chip">SolidWorks</span>
+            <span class="skill-chip">ANSYS FEA</span>
+            <span class="skill-chip">Structural Optimisation</span>
+            <span class="skill-chip">Team Leadership</span>
+            <span class="skill-chip">Budget Management</span>
+          </div>
+         <a href="case-study-1.html" class="btn-case">View Case Study →</a>
+        </div>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-img proj2">
+          <div class="project-img-inner">
+            <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0;opacity:0.2">
+              <ellipse cx="200" cy="100" rx="80" ry="30" fill="none" stroke="#3B82F6" stroke-width="1.2"/>
+              <line x1="200" y1="70" x2="200" y2="170" stroke="#2563EB" stroke-width="1"/>
+              <line x1="120" y1="100" x2="80" y2="140" stroke="#2563EB" stroke-width="1"/>
+              <line x1="280" y1="100" x2="320" y2="140" stroke="#2563EB" stroke-width="1"/>
+              <circle cx="200" cy="170" r="12" fill="none" stroke="#3B82F6" stroke-width="1.5"/>
+              <circle cx="80" cy="148" r="8" fill="none" stroke="#3B82F6" stroke-width="1.2"/>
+              <circle cx="320" cy="148" r="8" fill="none" stroke="#3B82F6" stroke-width="1.2"/>
+              <ellipse cx="200" cy="102" rx="30" ry="10" fill="none" stroke="#2563EB" stroke-width="0.8" stroke-dasharray="4,3"/>
+            </svg>
+          </div>
+          <span class="project-img-label">[ Add render/photo ]</span>
+        </div>
+        <div class="project-body">
+          <p class="project-num">Project 02 · R&D Engineering</p>
+          <h3 class="project-title">Underwater Drone Development</h3>
+          <p class="project-desc">R&D internship at Go Float Tech. Designed and validated underwater drone components using SolidWorks, progressing designs through the full product development lifecycle from concept to production-adopted components.</p>
+          <div class="project-result">Components adopted into production</div>
+          <div class="project-result">Full PD lifecycle: concept through validation</div>
+          <div class="project-skills">
+            <span class="skill-chip">SolidWorks</span>
+            <span class="skill-chip">Product Development</span>
+            <span class="skill-chip">Testing & Validation</span>
+            <span class="skill-chip">DFM</span>
+          </div>
+         <a href="case-study-2.html" class="btn-case">View Case Study →</a>
+        </div>
+      </div>
+
+      <!-- PROJECT 3 -->
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-img proj3">
+          <div class="project-img-inner">
+            <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0;opacity:0.2">
+              <rect x="160" y="80" width="80" height="80" rx="4" fill="none" stroke="#A78BFA" stroke-width="1.2"/>
+              <circle cx="60" cy="120" r="25" fill="none" stroke="#A78BFA" stroke-width="1"/>
+              <circle cx="340" cy="80" r="20" fill="none" stroke="#A78BFA" stroke-width="1"/>
+              <circle cx="340" cy="160" r="20" fill="none" stroke="#A78BFA" stroke-width="1"/>
+              <line x1="85" y1="120" x2="160" y2="120" stroke="#7C3AED" stroke-width="0.8" stroke-dasharray="5,3"/>
+              <line x1="240" y1="100" x2="320" y2="85" stroke="#7C3AED" stroke-width="0.8" stroke-dasharray="5,3"/>
+              <line x1="240" y1="140" x2="320" y2="155" stroke="#7C3AED" stroke-width="0.8" stroke-dasharray="5,3"/>
+              <text x="185" y="124" fill="#A78BFA" font-size="9" font-family="monospace">AM</text>
+            </svg>
+          </div>
+          <span class="project-img-label">[ Add system diagram ]</span>
+        </div>
+        <div class="project-body">
+          <p class="project-num">Project 03 · MSc Dissertation</p>
+          <h3 class="project-title">Cloud-Based Additive Manufacturing Platform</h3>
+          <p class="project-desc">MSc dissertation research developing a strategic framework for a cloud-connected, distributed additive manufacturing ecosystem. Explored platform architecture, stakeholder mapping, and the business case for democratised manufacturing.</p>
+          <div class="project-result">Novel platform architecture framework developed</div>
+          <div class="project-result">Stakeholder ecosystem modelled across supply chain</div>
+          <div class="project-skills">
+            <span class="skill-chip">Additive Manufacturing</span>
+            <span class="skill-chip">Systems Engineering</span>
+            <span class="skill-chip">Platform Strategy</span>
+            <span class="skill-chip">Industry 4.0</span>
+          </div>
+          <a href="case-study-3.html" class="btn-case">View Case Study →</a>
+        </div>
+      </div>
+
+      <!-- PROJECT 4 -->
+      <div class="project-card reveal reveal-delay-3">
+        <div class="project-img proj4">
+          <div class="project-img-inner">
+            <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0;opacity:0.2">
+              <rect x="150" y="90" width="100" height="80" rx="3" fill="none" stroke="#34D399" stroke-width="1.2"/>
+              <line x1="200" y1="90" x2="200" y2="60" stroke="#34D399" stroke-width="1"/>
+              <line x1="200" y1="170" x2="200" y2="200" stroke="#34D399" stroke-width="1"/>
+              <line x1="150" y1="130" x2="110" y2="130" stroke="#34D399" stroke-width="1"/>
+              <line x1="250" y1="130" x2="290" y2="130" stroke="#34D399" stroke-width="1"/>
+              <circle cx="200" cy="130" r="20" fill="none" stroke="#10B981" stroke-width="0.8" stroke-dasharray="4,3"/>
+              <path d="M200 60 Q230 90 200 120 Q170 90 200 60" fill="none" stroke="#34D399" stroke-width="0.8"/>
+            </svg>
+          </div>
+          <span class="project-img-label">[ Add CAD render ]</span>
+        </div>
+        <div class="project-body">
+          <p class="project-num">Project 04 · Final Year Project</p>
+          <h3 class="project-title">Multi-Directional Rotating Loading Bay</h3>
+          <p class="project-desc">Final year design project engineering a novel multi-directional rotating loading bay mechanism. Delivered full CAD model, FEA validation, and a manufacturing prototype — addressing a real logistics handling challenge.</p>
+          <div class="project-result">FEA-validated structural design</div>
+          <div class="project-result">Physical prototype manufactured and tested</div>
+          <div class="project-skills">
+            <span class="skill-chip">CAD</span>
+            <span class="skill-chip">FEA</span>
+            <span class="skill-chip">Prototyping</span>
+            <span class="skill-chip">DFM</span>
+          </div>
+          <a href="case-study-4.html" class="btn-case">View Case Study →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="section">
+  <div class="section-inner">
+    <div class="section-label reveal">Experience</div>
+    <div class="tol-line reveal reveal-delay-1" style="--blue:#3B82F6"><div class="mark" style="border-color:#3B82F6"></div><div class="line" style="background:linear-gradient(90deg,#3B82F6 0%,rgba(59,130,246,0.1) 100%)"></div></div>
+    <h2 class="section-heading reveal" style="color:white">The path<br>so far.</h2>
+    <p class="section-sub reveal reveal-delay-1">Engineering leadership, hands-on R&D, and postgraduate study across motorsport, product development, and manufacturing management.</p>
+    <br><br>
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <p class="timeline-date">2022 – 2024</p>
+        <h3 class="timeline-role">Team Captain & Lead Design Engineer</h3>
+        <p class="timeline-org">Team RGIT Racing · Formula Student · Mumbai, India</p>
+        <ul class="timeline-points">
+          <li>Led a 25-member cross-functional team across mechanical, electrical, and aerodynamics sub-teams</li>
+          <li>Drove chassis optimisation using ANSYS FEA — reducing weight by 22.5% while maintaining stiffness targets</li>
+          <li>Managed team budget, supplier relationships, and competition strategy</li>
+          <li>Achieved All India Rank 9 at Formula Bharat — the country's largest Formula Student event</li>
+          <li>Held captain role for three consecutive seasons</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal reveal-delay-1">
+        <div class="timeline-dot"></div>
+        <p class="timeline-date">Summer 2023</p>
+        <h3 class="timeline-role">R&D Design Intern</h3>
+        <p class="timeline-org">Go Float Tech · Underwater Drone Development</p>
+        <ul class="timeline-points">
+          <li>Designed underwater drone components in SolidWorks, progressing designs through concept, prototype, and validation</li>
+          <li>Conducted testing and design iteration to meet performance and manufacturability targets</li>
+          <li>Multiple component designs adopted directly into production — demonstrating commercial engineering impact</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal reveal-delay-2">
+        <div class="timeline-dot"></div>
+        <p class="timeline-date">2024 – 2025</p>
+        <h3 class="timeline-role">MSc Engineering Management</h3>
+        <p class="timeline-org">Loughborough University · Loughborough, UK</p>
+        <ul class="timeline-points">
+          <li>Postgraduate study at one of the UK's top-ranked engineering faculties</li>
+          <li>Dissertation: Cloud-Based Additive Manufacturing Platform — platform strategy, stakeholder architecture, and distributed manufacturing ecosystems</li>
+          <li>Modules include: Programme Management, Systems Engineering, Operations Strategy, Innovation Management</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section">
+  <div class="section-inner">
+    <div class="section-label reveal">Technical Skills</div>
+    <div class="tol-line reveal reveal-delay-1"><div class="mark"></div><div class="line"></div></div>
+    <h2 class="section-heading reveal">Built on strong<br>engineering foundations.</h2>
+    <p class="section-sub reveal reveal-delay-1">Tools, methods, and disciplines developed across academic projects, competition engineering, and professional R&D.</p>
+    <div class="skills-grid">
+      <div class="skill-cat reveal">
+        <p class="skill-cat-title">Design & Simulation</p>
+        <ul class="skill-list">
+          <li>SolidWorks</li>
+          <li>ANSYS Mechanical</li>
+          <li>AutoCAD</li>
+          <li>MATLAB</li>
+          <li>FEA Analysis</li>
+        </ul>
+      </div>
+      <div class="skill-cat reveal reveal-delay-1">
+        <p class="skill-cat-title">Manufacturing</p>
+        <ul class="skill-list">
+          <li>Additive Manufacturing</li>
+          <li>CNC Machining</li>
+          <li>Prototyping</li>
+          <li>DFM / DFA</li>
+          <li>Process Planning</li>
+        </ul>
+      </div>
+      <div class="skill-cat reveal reveal-delay-2">
+        <p class="skill-cat-title">Engineering</p>
+        <ul class="skill-list">
+          <li>Structural Optimisation</li>
+          <li>Systems Engineering</li>
+          <li>Product Development</li>
+          <li>Tolerance Analysis</li>
+        </ul>
+      </div>
+      <div class="skill-cat reveal reveal-delay-1">
+        <p class="skill-cat-title">Leadership</p>
+        <ul class="skill-list">
+          <li>Programme Management</li>
+          <li>Team Leadership (25+)</li>
+          <li>Budget Management</li>
+          <li>Stakeholder Management</li>
+        </ul>
+      </div>
+      <div class="skill-cat reveal reveal-delay-2">
+        <p class="skill-cat-title">Digital & Data</p>
+        <ul class="skill-list">
+          <li>Python</li>
+          <li>Excel (Advanced)</li>
+          <li>Data Analysis</li>
+          <li>Technical Reporting</li>
+        </ul>
+      </div>
+      <div class="skill-cat reveal reveal-delay-3">
+        <p class="skill-cat-title">Industry Focus</p>
+        <ul class="skill-list">
+          <li>Industry 4.0</li>
+          <li>Advanced Manufacturing</li>
+          <li>Engineering Management</li>
+          <li>R&D Processes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section id="philosophy">
+  <div class="philosophy-inner">
+    <div class="section-label reveal" style="justify-content:center">Engineering Philosophy</div>
+    <div class="reveal reveal-delay-1">
+      <blockquote class="philosophy-quote">
+        "The most interesting engineering problems sit where technical decisions, manufacturing realities, cost constraints, and human factors intersect."
+      </blockquote>
+    </div>
+    <div class="philosophy-divider reveal reveal-delay-2"></div>
+    <p class="philosophy-body reveal reveal-delay-3">
+      Good engineering is not just about finding a solution — it is about finding the right solution, built with an understanding of how it will be made, who will use it, and what constraints it must navigate. I approach every project as a system: components do not exist in isolation, and decisions made at the design stage have consequences that ripple through manufacturing, assembly, maintenance, and end use. This perspective — shaped by competitive motorsport, professional R&D, and postgraduate management study — is what I bring to every engineering challenge.
+    </p>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements" class="section">
+  <div class="section-inner">
+    <div class="section-label reveal">Achievements</div>
+    <div class="tol-line reveal reveal-delay-1"><div class="mark"></div><div class="line"></div></div>
+    <h2 class="section-heading reveal">Engineering milestones<br>worth noting.</h2>
+    <br><br>
+    <div class="achievements-grid">
+      <div class="achievement-card reveal">
+        <div class="achievement-icon">🏁</div>
+        <h3 class="achievement-title">All India Rank 9 — Formula Bharat</h3>
+        <p class="achievement-desc">Top 9 nationally in India's largest Formula Student competition, competing against teams from premier engineering institutions.</p>
+      </div>
+      <div class="achievement-card reveal reveal-delay-1">
+        <div class="achievement-icon">🎖️</div>
+        <h3 class="achievement-title">Team Captain · 3 Consecutive Seasons</h3>
+        <p class="achievement-desc">Elected and re-elected to lead Team RGIT Racing for three consecutive years, managing 25 engineers across all technical sub-teams.</p>
+      </div>
+      <div class="achievement-card reveal reveal-delay-2">
+        <div class="achievement-icon">🔩</div>
+        <h3 class="achievement-title">Designs Adopted into Production</h3>
+        <p class="achievement-desc">Underwater drone components designed during R&D internship validated and integrated directly into commercial production.</p>
+      </div>
+      <div class="achievement-card reveal reveal-delay-3">
+        <div class="achievement-icon">🎓</div>
+        <h3 class="achievement-title">MSc Engineering Management — Loughborough</h3>
+        <p class="achievement-desc">Postgraduate study at one of the UK's highest-ranked engineering universities, bridging technical excellence with strategic management.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label">Contact</div>
+    <div class="tol-line" style="margin-bottom:2rem"><div class="mark" style="border-color:#3B82F6"></div><div class="line" style="background:linear-gradient(90deg,#3B82F6 0%,rgba(59,130,246,0.1) 100%)"></div></div>
+    <h2 class="contact-heading reveal">Let's build something<br>worth building.</h2>
+    <p class="contact-sub reveal reveal-delay-1">Whether you are hiring for a graduate engineering role, building a product development team, or exploring engineering management talent — I would welcome a conversation.</p>
+    <div class="contact-grid reveal reveal-delay-2">
+      <div class="contact-item">
+        <span class="contact-label">Email</span>
+        <span class="contact-value">rudrakshmali1@gmail.com</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">LinkedIn</span>
+        <span class="contact-value">https://www.linkedin.com/in/rudraksh-mali1975/i</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Location</span>
+        <span class="contact-value">Loughborough, UK · Open to relocation</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Status</span>
+        <span class="contact-value">Available for graduate roles · 2025</span>
+      </div>
+    </div>
+    <div class="contact-actions reveal reveal-delay-3">
+      <a href="mailto:rudrakshmali1@gmail.com" class="btn-primary">Send Email →</a>
+      <a href="#" class="btn-outline" onclick="alert('Add your CV PDF link here.')">Download CV</a>
+      <a href="https://www.linkedin.com/in/rudraksh-mali1975/" target="_blank" class="btn-outline">View LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Rudraksh Mali · Mechanical Engineer</span>
+  <span class="footer-note">Portfolio · 2025 · Built with care</span>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Mobile nav
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+// Close nav on link click
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
 </html>

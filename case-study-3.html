@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud-Based AM Platform | Rudraksh Mali</title>
+<meta name="description" content="Case study: MSc Dissertation — Cloud-Based Additive Manufacturing Platform. Manufacturing ecosystem, platform strategy, stakeholder architecture.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A1628; --offwhite: #F7F6F3; --steel: #5C6B7A;
+    --blue: #2563EB; --blue-light: #3B82F6; --charcoal: #1A1A2E;
+    --grey-light: #E8E8E4; --white: #ffffff; --purple: #7C3AED;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--offwhite); color: var(--charcoal); -webkit-font-smoothing: antialiased; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 4rem; background: rgba(247,246,243,0.93); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+  .nav-logo { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 500; color: var(--navy); text-decoration: none; letter-spacing: 0.05em; }
+  .nav-back { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: var(--steel); text-decoration: none; transition: color 0.2s; }
+  .nav-back:hover { color: var(--navy); }
+
+  .cs-hero { min-height: 75vh; background: #1a0a28; display: flex; flex-direction: column; justify-content: flex-end; padding: 8rem 4rem 4rem; position: relative; overflow: hidden; }
+  .cs-hero-bg { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px); background-size: 60px 60px; }
+  .cs-hero-inner { max-width: 900px; position: relative; z-index: 2; }
+  .cs-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: #A78BFA; margin-bottom: 1.25rem; }
+  .cs-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; color: white; line-height: 1.1; margin-bottom: 1.25rem; }
+  .cs-subtitle { font-size: 1rem; font-weight: 300; color: #9B8FBF; line-height: 1.7; max-width: 600px; margin-bottom: 2.5rem; }
+  .cs-meta { display: flex; flex-wrap: wrap; gap: 2rem; }
+  .cs-meta-label { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: #A78BFA; margin-bottom: 0.3rem; }
+  .cs-meta-value { font-size: 0.88rem; color: rgba(255,255,255,0.6); }
+
+  .cs-content { max-width: 900px; margin: 0 auto; padding: 5rem 4rem; }
+  .cs-section { margin-bottom: 5rem; }
+  .cs-section-label { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
+  .cs-section-label::after { content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--purple); }
+  .cs-section-heading { font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 600; color: var(--navy); line-height: 1.25; margin-bottom: 1.25rem; }
+  .cs-body { font-size: 0.97rem; line-height: 1.85; color: #3A3A4A; font-weight: 300; }
+  .cs-body p { margin-bottom: 1.25rem; }
+  .cs-body strong { font-weight: 600; color: var(--navy); }
+  .cs-body ul { padding-left: 1.5rem; margin-bottom: 1.25rem; }
+  .cs-body ul li { margin-bottom: 0.5rem; }
+
+  .result-box { background: var(--white); border: 1px solid var(--grey-light); border-left: 3px solid var(--purple); border-radius: 4px; padding: 1.5rem 2rem; margin-bottom: 1rem; }
+  .result-box .rb-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--navy); line-height: 1; }
+  .result-box .rb-label { font-size: 0.82rem; color: var(--steel); margin-top: 0.25rem; }
+  .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+
+  /* GALLERY */
+  .gallery { margin: 2.5rem 0; }
+  .gallery-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--steel); margin-bottom: 1rem; }
+  .gallery-hero { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #1a0a28 0%, #2d1a4f 100%); border-radius: 6px; overflow: hidden; margin-bottom: 1rem; position: relative; }
+  .gallery-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .gallery-hero .img-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; color: rgba(255,255,255,0.2); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.08em; }
+  .gallery-hero .img-placeholder svg { opacity: 0.3; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+  .gallery-thumb { aspect-ratio: 4/3; background: linear-gradient(135deg, #1a0a28 0%, #2d1a4f 100%); border-radius: 4px; overflow: hidden; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; position: relative; }
+  .gallery-thumb:hover { transform: scale(1.02); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+  .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .gallery-thumb .img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.2); font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.06em; text-align: center; padding: 0.5rem; }
+  .gallery-caption { font-size: 0.78rem; color: var(--steel); margin-top: 0.4rem; font-style: italic; }
+  .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 999; align-items: center; justify-content: center; padding: 2rem; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 4px; }
+  .lightbox-close { position: absolute; top: 1.5rem; right: 2rem; color: white; font-size: 1.5rem; cursor: pointer; opacity: 0.7; background: none; border: none; }
+  .lightbox-close:hover { opacity: 1; }
+  .lightbox-caption { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.5); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.06em; white-space: nowrap; }
+
+  .insight-card { background: var(--white); border: 1px solid var(--grey-light); border-radius: 4px; padding: 1.75rem; margin-bottom: 1rem; }
+  .insight-title { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
+  .insight-body { font-size: 0.88rem; color: var(--steel); line-height: 1.65; }
+
+  .lesson-item { display: flex; gap: 1rem; margin-bottom: 1.25rem; }
+  .lesson-num { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--purple); min-width: 24px; padding-top: 0.2rem; }
+  .lesson-text { font-size: 0.92rem; color: #3A3A4A; line-height: 1.7; }
+
+  .skill-chip { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.06em; padding: 0.35rem 0.75rem; background: var(--offwhite); color: var(--steel); border-radius: 2px; display: inline-block; margin: 0.25rem; }
+
+  .cs-nav-footer { display: flex; justify-content: space-between; align-items: center; padding: 3rem 0 1rem; border-top: 1px solid var(--grey-light); margin-top: 4rem; }
+  .cs-nav-link { text-decoration: none; display: flex; flex-direction: column; gap: 0.25rem; }
+  .cs-nav-link .cnl-label { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--steel); }
+  .cs-nav-link .cnl-title { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--navy); transition: color 0.2s; }
+  .cs-nav-link:hover .cnl-title { color: var(--blue); }
+  .cs-nav-link.right { text-align: right; }
+  .back-btn { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); text-decoration: none; border-bottom: 1.5px solid var(--blue); padding-bottom: 2px; transition: color 0.2s; }
+  .back-btn:hover { color: var(--blue); }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) { nav { padding: 1.1rem 1.5rem; } .cs-hero { padding: 7rem 1.5rem 3rem; } .cs-content { padding: 3rem 1.5rem; } .results-grid { grid-template-columns: 1fr 1fr; } .gallery-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .gallery-grid { grid-template-columns: 1fr; } .results-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">RM / Portfolio</a>
+  <a href="index.html#projects" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    All Projects
+  </a>
+</nav>
+
+<div class="cs-hero">
+  <div class="cs-hero-bg"></div>
+  <div class="cs-hero-inner">
+    <p class="cs-eyebrow">Project 03 · MSc Dissertation · Loughborough University</p>
+    <h1 class="cs-title">Cloud-Based Additive<br>Manufacturing Platform</h1>
+    <p class="cs-subtitle">MSc dissertation research developing a strategic framework for a distributed, cloud-connected additive manufacturing ecosystem — exploring how platform architecture can democratise manufacturing access across supply chains.</p>
+    <div class="cs-meta">
+      <div class="cs-meta-item"><p class="cs-meta-label">Type</p><p class="cs-meta-value">MSc Dissertation</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Institution</p><p class="cs-meta-value">Loughborough University</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Programme</p><p class="cs-meta-value">MSc Engineering Management</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Focus</p><p class="cs-meta-value">Industry 4.0 · Platform Strategy</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="cs-content">
+
+  <div class="cs-section reveal">
+    <div class="results-grid">
+      <div class="result-box"><div class="rb-num">Novel</div><div class="rb-label">Platform architecture framework developed</div></div>
+      <div class="result-box"><div class="rb-num">Full</div><div class="rb-label">Stakeholder ecosystem modelled</div></div>
+      <div class="result-box"><div class="rb-num">I4.0</div><div class="rb-label">Industry 4.0 manufacturing application</div></div>
+    </div>
+  </div>
+
+  <!-- GALLERY -->
+  <div class="cs-section reveal">
+    <div class="gallery">
+      <p class="gallery-label">Dissertation Visuals</p>
+      <div class="gallery-hero">
+        <div class="img-placeholder">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>[ Add system architecture diagram or key figure ]</span>
+        </div>
+        <!-- <img src="images/am-platform-main.jpg" alt="Platform architecture diagram"> -->
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-thumb" onclick="openLightbox(this)">
+          <div class="img-placeholder">[ Ecosystem diagram ]</div>
+          <!-- <img src="images/am-ecosystem.jpg" alt="Manufacturing ecosystem diagram"> -->
+        </div>
+        <div class="gallery-thumb" onclick="openLightbox(this)">
+          <div class="img-placeholder">[ Stakeholder map ]</div>
+          <!-- <img src="images/am-stakeholders.jpg" alt="Stakeholder map"> -->
+        </div>
+        <div class="gallery-thumb" onclick="openLightbox(this)">
+          <div class="img-placeholder">[ Platform layers ]</div>
+          <!-- <img src="images/am-layers.jpg" alt="Platform architecture layers"> -->
+        </div>
+        <div class="gallery-thumb" onclick="openLightbox(this)">
+          <div class="img-placeholder">[ Research framework ]</div>
+          <!-- <img src="images/am-framework.jpg" alt="Research framework"> -->
+        </div>
+        <div class="gallery-thumb" onclick="openLightbox(this)">
+          <div class="img-placeholder">[ Business model canvas ]</div>
+          <!-- <img src="images/am-bmc.jpg" alt="Business model canvas"> -->
+        </div>
+        <div class="gallery-thumb" onclick="openLightbox(this)">
+          <div class="img-placeholder">[ Key findings ]</div>
+          <!-- <img src="images/am-findings.jpg" alt="Key findings"> -->
+        </div>
+      </div>
+      <p class="gallery-caption">MSc Dissertation · Loughborough University · 2024–25</p>
+    </div>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="cs-section-label">01 · Problem</p>
+    <h2 class="cs-section-heading">The Research Question</h2>
+    <div class="cs-body">
+      <p>Additive manufacturing (AM) has the potential to fundamentally change how products are designed, produced, and distributed — but significant barriers prevent this potential from being realised at scale. Access to AM equipment, knowledge, and quality-assured processes remains fragmented and unequally distributed across the manufacturing ecosystem.</p>
+      <p>The research question explored how a <strong>cloud-based platform architecture</strong> could aggregate distributed AM capacity — connecting designers, engineers, and manufacturers through a digital infrastructure that reduces access barriers, improves utilisation of existing AM assets, and enables new models of distributed production.</p>
+    </div>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="cs-section-label">02 · Research Approach</p>
+    <h2 class="cs-section-heading">Methodology</h2>
+    <div class="cs-body">
+      <p>The dissertation adopted a <strong>design science research</strong> methodology — combining systematic literature review with stakeholder analysis and strategic framework development. Key activities included:</p>
+      <ul>
+        <li>Comprehensive literature review of AM platform models, Industry 4.0 frameworks, and manufacturing-as-a-service business models</li>
+        <li>Stakeholder ecosystem mapping — identifying actors across the AM value chain and their roles, incentives, and interdependencies</li>
+        <li>Platform architecture design — defining layers of the proposed system from physical AM assets through digital services to end-user interfaces</li>
+        <li>Strategic analysis using established frameworks (value chain analysis, platform theory, SWOT) applied to the proposed model</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="cs-section-label">03 · Platform Architecture</p>
+    <h2 class="cs-section-heading">The Proposed Framework</h2>
+    <div class="cs-body">
+      <p>The proposed platform architecture comprises four interconnected layers:</p>
+      <ul>
+        <li><strong>Physical layer:</strong> Distributed AM assets (FDM, SLA, SLS machines) across participating manufacturing sites, standardised through common quality and capability registries</li>
+        <li><strong>Digital integration layer:</strong> API-driven connectivity enabling file transfer, machine status monitoring, and production tracking across geographically distributed nodes</li>
+        <li><strong>Service layer:</strong> Design validation, material selection guidance, and quality verification services operating as cloud functions accessible to all platform users</li>
+        <li><strong>User interface layer:</strong> Engineer and designer-facing tools for job submission, quoting, tracking, and quality reporting</li>
+      </ul>
+      <p>The architecture prioritises <strong>modularity</strong> — allowing new AM nodes and service providers to join the ecosystem without disrupting existing participants — and <strong>standardisation</strong> of data formats and quality metrics across the distributed network.</p>
+    </div>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="cs-section-label">04 · Key Insights</p>
+    <h2 class="cs-section-heading">Research Findings</h2>
+    <div class="insight-card">
+      <p class="insight-title">Governance is the primary challenge, not technology</p>
+      <p class="insight-body">The technical infrastructure for a distributed AM platform is largely achievable with existing cloud technologies. The harder problem is governance: quality standards, liability, intellectual property, and trust between participants in an open manufacturing network.</p>
+    </div>
+    <div class="insight-card">
+      <p class="insight-title">SME participation requires active barrier removal</p>
+      <p class="insight-body">Small and medium manufacturers — who hold much of the distributed AM capacity — face disproportionate barriers to platform participation. Successful platform design must actively lower onboarding costs and reduce compliance burden for SME nodes.</p>
+    </div>
+    <div class="insight-card">
+      <p class="insight-title">Data standardisation enables network effects</p>
+      <p class="insight-body">The value of the platform grows non-linearly with the number of participants, but only if data formats, capability descriptors, and quality metrics are standardised across nodes. Establishing these standards early is a prerequisite for network effects.</p>
+    </div>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="cs-section-label">05 · Lessons Learned</p>
+    <h2 class="cs-section-heading">What I Took Away</h2>
+    <div class="lesson-item">
+      <span class="lesson-num">01</span>
+      <p class="lesson-text"><strong>Engineering management bridges technical and strategic thinking.</strong> This project required deep understanding of both AM technology and platform business models — demonstrating that the best engineering solutions require management thinking, not just engineering thinking.</p>
+    </div>
+    <div class="lesson-item">
+      <span class="lesson-num">02</span>
+      <p class="lesson-text"><strong>Systems thinking scales.</strong> The tools used to model a car chassis — understanding load paths, interfaces, and interdependencies — apply equally to modelling a manufacturing ecosystem. Systems thinking is a transferable engineering skill.</p>
+    </div>
+    <div class="lesson-item">
+      <span class="lesson-num">03</span>
+      <p class="lesson-text"><strong>The future of manufacturing is distributed.</strong> Industry 4.0 is not just about smart factories — it is about smart networks of factories. Engineers who understand both the technology and the system-level implications will be well placed to shape this transition.</p>
+    </div>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="cs-section-label">Skills Applied</p>
+    <div>
+      <span class="skill-chip">Additive Manufacturing</span><span class="skill-chip">Systems Engineering</span>
+      <span class="skill-chip">Platform Strategy</span><span class="skill-chip">Industry 4.0</span>
+      <span class="skill-chip">Stakeholder Analysis</span><span class="skill-chip">Research Methodology</span>
+      <span class="skill-chip">Technical Writing</span><span class="skill-chip">Strategic Analysis</span>
+    </div>
+  </div>
+
+  <div class="cs-nav-footer reveal">
+    <a href="case-study-2.html" class="cs-nav-link">
+      <span class="cnl-label">← Previous</span>
+      <span class="cnl-title">Underwater Drone Development</span>
+    </a>
+    <a href="case-study-4.html" class="cs-nav-link right">
+      <span class="cnl-label">Next →</span>
+      <span class="cnl-title">Multi-Directional Loading Bay</span>
+    </a>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="">
+  <p class="lightbox-caption" id="lightbox-cap"></p>
+</div>
+
+<script>
+  const observer = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  function openLightbox(thumb) { const img = thumb.querySelector('img'); if (!img) return; document.getElementById('lightbox-img').src = img.src; document.getElementById('lightbox-cap').textContent = img.alt; document.getElementById('lightbox').classList.add('open'); }
+  function closeLightbox(e) { if (!e || e.target === document.getElementById('lightbox') || e.target.classList.contains('lightbox-close')) document.getElementById('lightbox').classList.remove('open'); }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open'); });
+</script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi-Directional Loading Bay | Rudraksh Mali</title>
+<meta name="description" content="Case study: Multi-Directional Rotating Loading Bay — Final Year Project. CAD modelling, FEA validation, manufactured prototype.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A1628; --offwhite: #F7F6F3; --steel: #5C6B7A;
+    --blue: #2563EB; --blue-light: #3B82F6; --charcoal: #1A1A2E;
+    --grey-light: #E8E8E4; --white: #ffffff; --green: #059669;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--offwhite); color: var(--charcoal); -webkit-font-smoothing: antialiased; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 4rem; background: rgba(247,246,243,0.93); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+  .nav-logo { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 500; color: var(--navy); text-decoration: none; letter-spacing: 0.05em; }
+  .nav-back { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: var(--steel); text-decoration: none; transition: color 0.2s; }
+  .nav-back:hover { color: var(--navy); }
+
+  .cs-hero { min-height: 75vh; background: #0a2818; display: flex; flex-direction: column; justify-content: flex-end; padding: 8rem 4rem 4rem; position: relative; overflow: hidden; }
+  .cs-hero-bg { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px); background-size: 60px 60px; }
+  .cs-hero-inner { max-width: 900px; position: relative; z-index: 2; }
+  .cs-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: #34D399; margin-bottom: 1.25rem; }
+  .cs-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; color: white; line-height: 1.1; margin-bottom: 1.25rem; }
+  .cs-subtitle { font-size: 1rem; font-weight: 300; color: #6B9E8A; line-height: 1.7; max-width: 600px; margin-bottom: 2.5rem; }
+  .cs-meta { display: flex; flex-wrap: wrap; gap: 2rem; }
+  .cs-meta-label { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: #34D399; margin-bottom: 0.3rem; }
+  .cs-meta-value { font-size: 0.88rem; color: rgba(255,255,255,0.6); }
+
+  .cs-content { max-width: 900px; margin: 0 auto; padding: 5rem 4rem; }
+  .cs-section { margin-bottom: 5rem; }
+  .cs-section-label { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
+  .cs-section-label::after { content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--green); }
+  .cs-section-heading { font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 600; color: var(--navy); line-height: 1.25; margin-bottom: 1.25rem; }
+  .cs-body { font-size: 0.97rem; line-height: 1.85; color: #3A3A4A; font-weight: 300; }
+  .cs-body p { margin-bottom: 1.25rem; }
+  .cs-body strong { font-weight: 600; color: var(--navy); }
+  .cs-body ul { padding-left: 1.5rem; margin-bottom: 1.25rem; }
+  .cs-body ul li { margin-bottom: 0.5rem; }
+
+  .result-box { background: var(--white); border: 1px solid var(--grey-light); border-left: 3px solid var(--green); border-radius: 4px; padding: 1.5rem 2rem; margin-bottom: 1rem; }
+  .result-box .rb-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--navy); line-height: 1; }
+  .result-box .rb-label { font-size: 0.82rem; color: var(--steel); margin-top: 0.25rem; }
+  .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+
+  /* GALLERY */
+  .gallery { margin: 2.5rem 0; }
+  .gallery-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--steel); margin-bottom: 1rem; }
+  .gallery-hero { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #0a2818 0%, #0d4a2a 100%); border-radius: 6px; overflow: hidden; margin-bottom: 1rem; position: relative; }
+  .gallery-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .gallery-hero .img-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; color: rgba(255,255,255,0.2); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.08em; }
+  .gallery-hero .img-placeholder svg { opacity: 0.3; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+  .gallery-thumb { aspect-ratio: 4/3; background: linear-gradient(135deg, #0a2818 0%, #0d4a2a 100%); border-radius: 4px; overflow: hidden; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; position: relative; }
+  .gallery-thumb:hover { transform: scale(1.02); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+  .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .gallery-thumb .img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.2); font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.06em; text-align: center; padding: 0.5rem; }
+  .gallery-caption { font-size: 0.78rem; color: var(--steel); margin-top: 0.4rem; font-style: italic; }
+  .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 999; align-items: center; justify-content: center; padding: 2rem; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 4px; }
+  .lightbox-close { position: absolute; top: 1.5rem; right: 2rem; color: white; font-size: 1.5rem; cursor: pointer; opacity: 0.7; background: none; border: none; }
+  .lightbox-close:hover { opacity: 1; }
+  .lightbox-caption { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.5); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.06em; white-space: nowrap; }
+
+  .process-step { display: flex; gap: 1.5rem; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--grey-light); }
+  .process-step:last-child { border-bottom: none; }
+  .process-step-num { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--green); min-width: 28px; padding-top: 0.15rem; }
+  .process-step-content h4 { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; }
+  .process-step-content p { font-size: 0.88rem; color: var(--steel); line-height: 1.65; }
+
+  .decision-card { background: var(--white); border: 1px solid var(--grey-light); border-radius: 4px; padding: 1.75rem; margin-bottom: 1rem; }
+  .decision-title { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
+  .decision-body { font-size: 0.88rem; color: var(--steel); line-height: 1.65; }
+
+  .lesson-item { display: flex; gap: 1rem; margin-bottom: 1.25rem; }
+  .lesson-num { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--green); min-width: 24px; padding-top: 0.2rem; }
+  .lesson-text { font-size: 0.92rem; color: #3A3A4A; line-height: 1.7; }
+
+  .skill-chip { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.06em; padding: 0.35rem 0.75rem; background: var(--offwhite); color: var(--steel); border-radius: 2px; display: inline-block; margin: 0.25rem; }
+
+  .cs-nav-footer { display: flex; justify-content: space-between; align-items: center; padding: 3rem 0 1rem; border-top: 1px solid var(--grey-light); margin-top: 4rem; }
+  .cs-nav-link { text-decoration: none; display: flex; flex-direction: column; gap: 0.25rem; }
+  .cs-nav-link .cnl-label { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--steel); }
+  .cs-nav-link .cnl-title { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--navy); transition: color 0.2s; }
+  .cs-nav-link:hover .cnl-title { color: var(--blue); }
+  .back-btn { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); text-decoration: none; border-bottom: 1.5px solid var(--blue); padding-bottom: 2px; transition: color 0.2s; }
+  .back-btn:hover { color: var(--blue); }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) { nav { padding: 1.1rem 1.5rem; } .cs-hero { padding: 7rem 1.5rem 3rem; } .cs-content { padding: 3rem 1.5rem; } .results-grid { grid-template-columns: 1fr 1fr; } .gallery-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .gallery-grid { grid-template-columns: 1fr; } .results-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">RM / Portfolio</a>
+  <a href="index.html#projects" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    All Projects
+  </a>
+</nav>
+
+<div class="cs-hero">
+  <div class="cs-hero-bg"></div>
+  <div class="cs-hero-inner">
+    <p class="cs-eyebrow">Project 04 · Final Year Project · Mechanical Engineering</p>
+    <h1 class="cs-title">Multi-Directional<br>Rotating Loading Bay</h1>
+    <p class="cs-subtitle">Final year design project engineering a novel multi-directional rotating loading bay mechanism — from CAD concept through FEA validation to a working manufactured prototype.</p>
+    <div class="cs-meta">
+      <div class="cs-meta-item"><p class="cs-meta-label">Type</p><p class="cs-meta-value">Final Year Project (FYP)</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Degree</p><p class="cs-meta-value">BE Mechanical Engineering</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Deliverables</p><p class="cs-meta-value">CAD model · FEA · Working prototype</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Application</p><p class="cs-meta-value">Logistics & materials handling</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="cs-content">
+
+  <div class="cs-section reveal">
+    <div class="results-grid">
+      <div class="result-box"><div class="rb-num">FEA</div><div class="rb-label">Structural validation with ANSYS</div></div>
+      <div class="result-box"><div class="rb-num">Built</div><div class="rb-label">Working physical prototype</div></div>
+      <div class="result-box"><div class="rb-num">360°</div><div class="rb-label">Multi-axis rotation capability</div></div>
+    </div>
+  </div>
+
+  <!-- GALLERY -->
+  <div class="cs-section reveal">
+    <div class="gallery">
+      <p class="gallery-label">Project Gallery</p>
+      <div class="gallery-hero">
+        <div class="img-placeholder">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>[ Add main project photo — CAD render or prototype ]</span>
+        </div>
+        <!-- <img src="images/bay-main.jpg" alt="Multi-directional loading bay — main view"> -->
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-thumb" onclick="openLightbox(this)">
+          <div class="img-placeholder">[ CAD model — full ]</div>
+          <!-- <img src="images/bay-cad-full.jpg" alt="CAD model full view"> -->
+        </div>
+        <div class="gallery-thumb" onclick="openLightbox(this)">
+          <div class="img-placeholder">[ FEA stress map ]</div>
+          <!-- <img src="images/bay-fea.jpg" alt="FEA stress analysis"> -->
+        </div>
+        <div class="gallery-thumb" onclick="openLightbox(this)">
+          <div class="img-placeholder">[ Mechanism detail ]</div>
+          <!-- <img src="images/bay-mechanism.jpg" alt="Rotation mechanism detail"> -->
+        </div>
+        <div class="gallery-thumb" onclick="openLightbox(this)">
+          <div class="img-placeholder">[ Fabrication process ]</div>
+          <!-- <img src="images/bay-fab.jpg" alt="Fabrication process"> -->
+        </div>
+        <div class="gallery-thumb" onclick="openLightbox(this)">
+          <div class="img-placeholder">[ Assembled prototype ]</div>
+          <!-- <img src="images/bay-prototype.jpg" alt="Assembled prototype"> -->
+        </div>
+        <div class="gallery-thumb" onclick="openLightbox(this)">
+          <div class="img-placeholder">[ Testing in use ]</div>
+          <!-- <img src="images/bay-testing.jpg" alt="Prototype testing"> -->
+        </div>
+      </div>
+      <p class="gallery-caption">BE Mechanical Engineering · Final Year Project</p>
+    </div>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="cs-section-label">01 · Problem</p>
+    <h2 class="cs-section-heading">The Challenge</h2>
+    <div class="cs-body">
+      <p>Conventional loading bays are constrained to fixed orientations — limiting their flexibility in logistics environments where goods must be handled from multiple directions. The project brief required the design and engineering of a <strong>multi-directional rotating loading bay</strong> capable of receiving and dispatching loads from different approach angles.</p>
+      <p>The challenge was both mechanical — designing a rotation mechanism that could support the required load while enabling smooth, controlled multi-axis movement — and structural: ensuring the platform could withstand operational loads without fatigue failure or excessive deflection.</p>
+    </div>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="cs-section-label">02 · Constraints</p>
+    <h2 class="cs-section-heading">Engineering Constraints</h2>
+    <div class="cs-body">
+      <ul>
+        <li><strong>Load capacity:</strong> Platform required to support defined static and dynamic load cases representative of logistics handling</li>
+        <li><strong>Deflection limits:</strong> Maximum allowable deflection under full load to maintain safe operation</li>
+        <li><strong>Factor of safety:</strong> Minimum FoS defined for all structural members under worst-case loading</li>
+        <li><strong>Manufacturability:</strong> Prototype to be built in university workshop using standard materials and processes</li>
+        <li><strong>Compactness:</strong> Mechanism required to fit within defined envelope constraints</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="cs-section-label">03 · Design Process</p>
+    <h2 class="cs-section-heading">Concept to Prototype</h2>
+    <div class="process-step">
+      <span class="process-step-num">01</span>
+      <div class="process-step-content">
+        <h4>Mechanism concept generation</h4>
+        <p>Explored multiple mechanisms for achieving multi-directional rotation — including turntable bearings, crossed-roller arrangements, and segmented track systems. Each was evaluated against load capacity, compactness, and manufacturability criteria.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <span class="process-step-num">02</span>
+      <div class="process-step-content">
+        <h4>CAD development in SolidWorks</h4>
+        <p>Selected concept developed into a full 3D assembly model with all components, fasteners, and interfaces defined. Assembly-level clearance checks confirmed the mechanism would function through its full range of motion without interference.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <span class="process-step-num">03</span>
+      <div class="process-step-content">
+        <h4>FEA structural validation</h4>
+        <p>ANSYS Mechanical used to run static structural analyses across the defined load cases. Stress and deflection results mapped across all components, with high-stress regions identified for design review. All structural members confirmed above minimum FoS requirements.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <span class="process-step-num">04</span>
+      <div class="process-step-content">
+        <h4>Prototype manufacture</h4>
+        <p>Workshop drawings generated from the CAD model and submitted for fabrication. Prototype manufactured using CNC machining, manual turning, and standard fasteners. Assembly completed and validated against the CAD model.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <span class="process-step-num">05</span>
+      <div class="process-step-content">
+        <h4>Testing and validation</h4>
+        <p>Physical prototype tested under representative loading conditions. Measured deflection values compared against FEA predictions — confirming model accuracy and structural adequacy.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="cs-section-label">04 · Key Decisions</p>
+    <h2 class="cs-section-heading">Engineering Judgement</h2>
+    <div class="decision-card">
+      <p class="decision-title">Bearing selection</p>
+      <p class="decision-body">Selected a large-diameter slewing ring bearing as the primary rotation element — accepting higher unit cost compared to a fabricated track system, in exchange for significantly improved load capacity, compactness, and reliability. The commercial bearing also reduced manufacturing complexity substantially.</p>
+    </div>
+    <div class="decision-card">
+      <p class="decision-title">Platform material — steel vs aluminium</p>
+      <p class="decision-body">Chose mild steel structural sections for the platform frame rather than aluminium — the welding simplicity, cost, and stiffness-to-cost ratio of steel outweighing the weight saving from aluminium in this application, where weight is not a performance driver.</p>
+    </div>
+    <div class="decision-card">
+      <p class="decision-title">FEA mesh refinement strategy</p>
+      <p class="decision-body">Applied locally refined mesh at weld joint locations and areas of geometric stress concentration, rather than globally refining the mesh — achieving accurate stress results at critical locations without the computational cost of a fully fine mesh.</p>
+    </div>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="cs-section-label">05 · Results</p>
+    <h2 class="cs-section-heading">What Was Delivered</h2>
+    <div class="cs-body">
+      <p>The project delivered three key outputs: a complete <strong>SolidWorks CAD assembly</strong> with full engineering drawings, an <strong>ANSYS FEA validation report</strong> confirming structural adequacy across all load cases, and a <strong>working physical prototype</strong> demonstrating multi-directional rotation under load.</p>
+      <p>Measured test deflections compared well against FEA predictions, validating both the modelling approach and the structural design. The prototype demonstrated smooth, controlled rotation in multiple directions — meeting the original design brief.</p>
+    </div>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="cs-section-label">06 · Lessons Learned</p>
+    <h2 class="cs-section-heading">What I Took Away</h2>
+    <div class="lesson-item">
+      <span class="lesson-num">01</span>
+      <p class="lesson-text"><strong>The gap between CAD and manufacture is real.</strong> Tolerances that look fine in SolidWorks can be challenging to achieve in a workshop. Building the prototype taught me to design with tighter awareness of practical manufacturing limits.</p>
+    </div>
+    <div class="lesson-item">
+      <span class="lesson-num">02</span>
+      <p class="lesson-text"><strong>FEA is a tool, not a guarantee.</strong> The validation process — comparing FEA predictions against physical measurements — demonstrated both the power and the limits of simulation. Boundary conditions and simplifications matter enormously.</p>
+    </div>
+    <div class="lesson-item">
+      <span class="lesson-num">03</span>
+      <p class="lesson-text"><strong>Complete the engineering story end-to-end.</strong> Taking a project from brief through design, analysis, manufacture, and physical test gave me a complete view of the product development cycle that no individual stage alone could provide.</p>
+    </div>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="cs-section-label">Skills Applied</p>
+    <div>
+      <span class="skill-chip">SolidWorks</span><span class="skill-chip">ANSYS FEA</span>
+      <span class="skill-chip">Prototyping</span><span class="skill-chip">CNC Machining</span>
+      <span class="skill-chip">Engineering Drawings</span><span class="skill-chip">DFM</span>
+      <span class="skill-chip">Structural Analysis</span><span class="skill-chip">Testing & Validation</span>
+    </div>
+  </div>
+
+  <div class="cs-nav-footer reveal">
+    <a href="case-study-3.html" class="cs-nav-link">
+      <span class="cnl-label">← Previous</span>
+      <span class="cnl-title">Cloud-Based AM Platform</span>
+    </a>
+    <a href="index.html#projects" class="back-btn">Back to Portfolio →</a>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="">
+  <p class="lightbox-caption" id="lightbox-cap"></p>
+</div>
+
+<script>
+  const observer = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  function openLightbox(thumb) { const img = thumb.querySelector('img'); if (!img) return; document.getElementById('lightbox-img').src = img.src; document.getElementById('lightbox-cap').textContent = img.alt; document.getElementById('lightbox').classList.add('open'); }
+  function closeLightbox(e) { if (!e || e.target === document.getElementById('lightbox') || e.target.classList.contains('lightbox-close')) document.getElementById('lightbox').classList.remove('open'); }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open'); });
+</script>
+</body>
+</html>
