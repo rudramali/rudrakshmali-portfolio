@@ -1,407 +1,1398 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Formula Bharat Race Car | Rudraksh Mali</title>
-<meta name="description" content="Case study: Formula Bharat Race Car chassis optimisation. Led 25-member team, achieved All India Rank 9.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --navy: #0A1628; --navy-mid: #132040; --offwhite: #F7F6F3;
-    --steel: #5C6B7A; --blue: #2563EB; --blue-light: #3B82F6;
-    --charcoal: #1A1A2E; --grey-light: #E8E8E4; --white: #ffffff;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', sans-serif; background: var(--offwhite); color: var(--charcoal); -webkit-font-smoothing: antialiased; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formula Bharat Race Car | Rudraksh Mali</title>
+  <meta name="description" content="Case study: Formula Bharat Race Car chassis optimisation. Led 25-member team, achieved All India Rank 9.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Google model-viewer CDN -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.25rem 4rem;
-    background: rgba(247,246,243,0.93); backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-  }
-  .nav-logo { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 500; color: var(--navy); text-decoration: none; letter-spacing: 0.05em; }
-  .nav-back { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: var(--steel); text-decoration: none; transition: color 0.2s; }
-  .nav-back:hover { color: var(--navy); }
+  <style>
+    :root {
+      /* Williams Racing Inspired Color Palette */
+      --primary: #041E42;       /* Williams Deep Navy */
+      --secondary: #0057B8;     /* Williams Racing Blue */
+      --accent: #00AEEF;        /* Williams Electric Blue */
+      --bg: #F8F9FA;            /* Warm/Clean light background */
+      --text: #1B1B1B;          /* Solid readability text color */
+      --card: #FFFFFF;          /* Pure white card backgrounds */
+      --steel: #5C6B7A;         /* Neutral slate/grey */
+      --grey-light: #E2E8F0;    /* Muted border grey */
+      --white: #FFFFFF;
+      --transition-speed: 0.3s;
+      --border-radius: 8px;
+      --glow-shadow: 0 10px 30px -10px rgba(0, 87, 184, 0.25);
+    }
 
-  /* HERO */
-  .cs-hero {
-    min-height: 75vh; background: var(--navy);
-    display: flex; flex-direction: column; justify-content: flex-end;
-    padding: 8rem 4rem 4rem; position: relative; overflow: hidden;
-  }
-  .cs-hero-bg {
-    position: absolute; inset: 0; pointer-events: none;
-    background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-  .cs-hero-inner { max-width: 900px; position: relative; z-index: 2; }
-  .cs-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 1.25rem; }
-  .cs-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; color: var(--white); line-height: 1.1; margin-bottom: 1.25rem; }
-  .cs-subtitle { font-size: 1rem; font-weight: 300; color: #6B8CAD; line-height: 1.7; max-width: 600px; margin-bottom: 2.5rem; }
-  .cs-meta { display: flex; flex-wrap: wrap; gap: 2rem; }
-  .cs-meta-item { }
-  .cs-meta-label { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 0.3rem; }
-  .cs-meta-value { font-size: 0.88rem; color: rgba(255,255,255,0.6); }
+    *, *::before, *::after { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
 
-  /* MAIN CONTENT */
-  .cs-content { max-width: 900px; margin: 0 auto; padding: 5rem 4rem; }
+    html { 
+      scroll-behavior: smooth; 
+    }
 
-  /* SECTION BLOCKS */
-  .cs-section { margin-bottom: 5rem; }
-  .cs-section-label { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
-  .cs-section-label::after { content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--blue); }
-  .cs-section-heading { font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 600; color: var(--navy); line-height: 1.25; margin-bottom: 1.25rem; }
-  .cs-body { font-size: 0.97rem; line-height: 1.85; color: #3A3A4A; font-weight: 300; }
-  .cs-body p { margin-bottom: 1.25rem; }
-  .cs-body strong { font-weight: 600; color: var(--navy); }
-  .cs-body ul { padding-left: 1.5rem; margin-bottom: 1.25rem; }
-  .cs-body ul li { margin-bottom: 0.5rem; }
+    body { 
+      font-family: 'Inter', sans-serif; 
+      background: var(--bg); 
+      color: var(--text); 
+      -webkit-font-smoothing: antialiased; 
+      line-height: 1.6;
+    }
 
-  /* RESULT HIGHLIGHT */
-  .result-box { background: var(--white); border: 1px solid var(--grey-light); border-left: 3px solid var(--blue); border-radius: 4px; padding: 1.5rem 2rem; margin-bottom: 1rem; }
-  .result-box .rb-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--navy); line-height: 1; }
-  .result-box .rb-label { font-size: 0.82rem; color: var(--steel); margin-top: 0.25rem; }
-  .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+    /* Focus styling for Accessibility */
+    a:focus-visible, button:focus-visible, model-viewer:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+    }
 
-  /* ═══════════════════════════════════════════
-     PHOTO GALLERY — ADD YOUR IMAGES HERE
-     ═══════════════════════════════════════════ */
-  .gallery { margin: 2.5rem 0; }
-  .gallery-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--steel); margin-bottom: 1rem; }
+    /* NAVIGATION */
+    nav {
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      z-index: 100;
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between;
+      padding: 1.25rem 4rem;
+      background: rgba(248, 249, 250, 0.9); 
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(4, 30, 66, 0.08);
+      transition: background var(--transition-speed);
+    }
 
-  /* MAIN hero image of the project */
-  .gallery-hero {
-    width: 100%; aspect-ratio: 16/9;
-    background: linear-gradient(135deg, var(--navy) 0%, #1e3a5f 100%);
-    border-radius: 6px; overflow: hidden; margin-bottom: 1rem;
-    position: relative;
-  }
-  .gallery-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .gallery-hero .img-placeholder {
-    width: 100%; height: 100%; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 0.75rem;
-    color: rgba(255,255,255,0.25); font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem; letter-spacing: 0.08em;
-  }
-  .gallery-hero .img-placeholder svg { opacity: 0.3; }
+    .nav-logo { 
+      font-family: 'JetBrains Mono', monospace; 
+      font-size: 0.85rem; 
+      font-weight: 500; 
+      color: var(--primary); 
+      text-decoration: none; 
+      letter-spacing: 0.05em; 
+    }
 
-  /* Grid of additional images */
-  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
-  .gallery-thumb {
-    aspect-ratio: 4/3;
-    background: linear-gradient(135deg, #0d2137 0%, #1a3a5f 100%);
-    border-radius: 4px; overflow: hidden; cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s; position: relative;
-  }
-  .gallery-thumb:hover { transform: scale(1.02); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
-  .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .gallery-thumb .img-placeholder {
-    width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
-    color: rgba(255,255,255,0.2); font-family: 'JetBrains Mono', monospace;
-    font-size: 0.62rem; letter-spacing: 0.06em; text-align: center; padding: 0.5rem;
-  }
-  .gallery-caption { font-size: 0.78rem; color: var(--steel); margin-top: 0.4rem; font-style: italic; }
+    .nav-back { 
+      display: flex; 
+      align-items: center; 
+      gap: 0.5rem; 
+      font-size: 0.8rem; 
+      font-weight: 600; 
+      letter-spacing: 0.05em; 
+      text-transform: uppercase; 
+      color: var(--steel); 
+      text-decoration: none; 
+      transition: color var(--transition-speed); 
+    }
 
-  /* LIGHTBOX */
-  .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 999; align-items: center; justify-content: center; padding: 2rem; }
-  .lightbox.open { display: flex; }
-  .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 4px; }
-  .lightbox-close { position: absolute; top: 1.5rem; right: 2rem; color: white; font-size: 1.5rem; cursor: pointer; opacity: 0.7; transition: opacity 0.2s; background: none; border: none; }
-  .lightbox-close:hover { opacity: 1; }
-  .lightbox-caption { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.5); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.06em; white-space: nowrap; }
+    .nav-back:hover { 
+      color: var(--secondary); 
+    }
 
-  /* KEY DECISIONS */
-  .decision-card { background: var(--white); border: 1px solid var(--grey-light); border-radius: 4px; padding: 1.75rem; margin-bottom: 1rem; }
-  .decision-title { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
-  .decision-body { font-size: 0.88rem; color: var(--steel); line-height: 1.65; }
+    /* HERO */
+    .cs-hero {
+      min-height: 80vh; 
+      background: linear-gradient(135deg, var(--primary) 0%, #020F21 100%);
+      display: flex; 
+      flex-direction: column; 
+      justify-content: flex-end;
+      padding: 10rem 4rem 6rem; 
+      position: relative; 
+      overflow: hidden;
+    }
 
-  /* LESSONS */
-  .lesson-item { display: flex; gap: 1rem; margin-bottom: 1.25rem; }
-  .lesson-num { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--blue); min-width: 24px; padding-top: 0.2rem; }
-  .lesson-text { font-size: 0.92rem; color: #3A3A4A; line-height: 1.7; }
+    .cs-hero-bg {
+      position: absolute; 
+      inset: 0; 
+      pointer-events: none;
+      background-image: 
+        linear-gradient(rgba(0, 174, 239, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 174, 239, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.8;
+    }
 
-  /* SKILLS USED */
-  .skill-chip { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.06em; padding: 0.35rem 0.75rem; background: var(--offwhite); color: var(--steel); border-radius: 2px; display: inline-block; margin: 0.25rem; }
+    .cs-hero-inner { 
+      max-width: 900px; 
+      position: relative; 
+      z-index: 2; 
+      margin: 0 auto; 
+      width: 100%;
+    }
 
-  /* NEXT / BACK NAVIGATION */
-  .cs-nav-footer { display: flex; justify-content: space-between; align-items: center; padding: 3rem 0 1rem; border-top: 1px solid var(--grey-light); margin-top: 4rem; }
-  .cs-nav-link { text-decoration: none; display: flex; flex-direction: column; gap: 0.25rem; }
-  .cs-nav-link .cnl-label { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--steel); }
-  .cs-nav-link .cnl-title { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--navy); transition: color 0.2s; }
-  .cs-nav-link:hover .cnl-title { color: var(--blue); }
-  .cs-nav-link.right { text-align: right; }
-  .back-btn { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); text-decoration: none; border-bottom: 1.5px solid var(--blue); padding-bottom: 2px; transition: color 0.2s; }
-  .back-btn:hover { color: var(--blue); }
+    .cs-eyebrow { 
+      font-family: 'JetBrains Mono', monospace; 
+      font-size: 0.75rem; 
+      letter-spacing: 0.15em; 
+      text-transform: uppercase; 
+      color: var(--accent); 
+      margin-bottom: 1.5rem; 
+      font-weight: 500;
+    }
 
-  /* REVEAL */
-  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+    .cs-title { 
+      font-family: 'Playfair Display', serif; 
+      font-size: clamp(2.5rem, 5vw, 4rem); 
+      font-weight: 700; 
+      color: var(--white); 
+      line-height: 1.15; 
+      margin-bottom: 1.5rem; 
+    }
 
-  @media (max-width: 768px) {
-    nav { padding: 1.1rem 1.5rem; }
-    .cs-hero { padding: 7rem 1.5rem 3rem; }
-    .cs-content { padding: 3rem 1.5rem; }
-    .results-grid { grid-template-columns: 1fr 1fr; }
-    .gallery-grid { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 480px) {
-    .gallery-grid { grid-template-columns: 1fr; }
-    .results-grid { grid-template-columns: 1fr; }
-  }
-</style>
+    .cs-subtitle { 
+      font-size: 1.05rem; 
+      font-weight: 300; 
+      color: rgba(248, 249, 250, 0.75); 
+      line-height: 1.75; 
+      max-width: 700px; 
+      margin-bottom: 3.5rem; 
+    }
+
+    .cs-meta { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+      gap: 2rem; 
+      border-top: 1px solid rgba(255, 255, 255, 0.1); 
+      padding-top: 2rem;
+    }
+
+    .cs-meta-label { 
+      font-family: 'JetBrains Mono', monospace; 
+      font-size: 0.65rem; 
+      letter-spacing: 0.1em; 
+      text-transform: uppercase; 
+      color: var(--accent); 
+      margin-bottom: 0.5rem; 
+    }
+
+    .cs-meta-value { 
+      font-size: 0.9rem; 
+      color: rgba(255, 255, 255, 0.85); 
+      font-weight: 400;
+    }
+
+    /* MAIN CONTENT WRAPPER */
+    .cs-content { 
+      max-width: 900px; 
+      margin: 0 auto; 
+      padding: 6rem 4rem; 
+    }
+
+    /* SECTION BLOCKS */
+    .cs-section { 
+      margin-bottom: 6rem; 
+    }
+
+    .cs-section-label { 
+      font-family: 'JetBrains Mono', monospace; 
+      font-size: 0.72rem; 
+      letter-spacing: 0.12em; 
+      text-transform: uppercase; 
+      color: var(--secondary); 
+      margin-bottom: 1rem; 
+      display: flex; 
+      align-items: center; 
+      gap: 0.75rem; 
+      font-weight: 500;
+    }
+
+    .cs-section-label::after { 
+      content: ''; 
+      flex: 1; 
+      max-width: 40px; 
+      height: 1.5px; 
+      background: var(--accent); 
+    }
+
+    .cs-section-heading { 
+      font-family: 'Playfair Display', serif; 
+      font-size: 2rem; 
+      font-weight: 600; 
+      color: var(--primary); 
+      line-height: 1.3; 
+      margin-bottom: 1.5rem; 
+    }
+
+    .cs-body { 
+      font-size: 1rem; 
+      line-height: 1.9; 
+      color: #3A3A4A; 
+      font-weight: 300; 
+    }
+
+    .cs-body p { 
+      margin-bottom: 1.5rem; 
+    }
+
+    .cs-body strong { 
+      font-weight: 600; 
+      color: var(--primary); 
+    }
+
+    .cs-body ul { 
+      padding-left: 1.5rem; 
+      margin-bottom: 1.5rem; 
+    }
+
+    .cs-body ul li { 
+      margin-bottom: 0.6rem; 
+    }
+
+    /* RESULT HIGHLIGHTS */
+    .results-grid { 
+      display: grid; 
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 1.5rem; 
+      margin-bottom: 2rem; 
+    }
+
+    .result-box { 
+      background: var(--card); 
+      border: 1px solid var(--grey-light); 
+      border-left: 4px solid var(--secondary); 
+      border-radius: var(--border-radius); 
+      padding: 1.75rem; 
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 2px 4px -1px rgba(0,0,0,0.01);
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed);
+    }
+
+    .result-box:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: var(--glow-shadow);
+    }
+
+    .result-box .rb-num { 
+      font-family: 'Playfair Display', serif; 
+      font-size: 2.25rem; 
+      font-weight: 700; 
+      color: var(--primary); 
+      line-height: 1.1; 
+    }
+
+    .result-box .rb-label { 
+      font-size: 0.85rem; 
+      color: var(--steel); 
+      margin-top: 0.5rem; 
+      line-height: 1.4;
+      font-weight: 400;
+    }
+
+    /* ENGINEERING GALLERY */
+    .gallery { 
+      margin: 3rem 0; 
+    }
+
+    .gallery-label { 
+      font-family: 'JetBrains Mono', monospace; 
+      font-size: 0.72rem; 
+      letter-spacing: 0.1em; 
+      text-transform: uppercase; 
+      color: var(--steel); 
+      margin-bottom: 1.25rem; 
+      font-weight: 500;
+    }
+
+    /* Interactive 3D Model Styling */
+    .viewer-container {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
+      border: 1px solid var(--grey-light);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      margin-bottom: 2rem;
+      position: relative;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    .viewer-header {
+      padding: 1rem 1.5rem;
+      background: var(--primary);
+      color: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .viewer-header h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .viewer-instruction {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.6);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    model-viewer {
+      width: 100%;
+      height: 500px;
+      display: block;
+      --poster-color: transparent;
+      outline: none;
+    }
+
+    /* Model Viewer Fallback Loading Card */
+    .model-fallback {
+      position: absolute;
+      inset: 0;
+      background: #030F21;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+      transition: opacity 0.5s ease;
+    }
+
+    .model-fallback.hidden {
+      opacity: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .fallback-overlay-text {
+      position: absolute;
+      bottom: 1.5rem;
+      text-align: center;
+      color: var(--white);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .fallback-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+    }
+
+    .fallback-subtitle {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Gallery Grid & Lightbox Trigger */
+    .gallery-grid { 
+      display: grid; 
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 1rem; 
+    }
+
+    .gallery-thumb {
+      aspect-ratio: 4/3;
+      background: var(--primary);
+      border-radius: var(--border-radius); 
+      overflow: hidden; 
+      cursor: pointer;
+      position: relative;
+      border: 1px solid var(--grey-light);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+
+    .gallery-thumb img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      display: block; 
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gallery-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(4,30,66,0) 40%, rgba(4,30,66,0.85) 100%);
+      opacity: 0;
+      transition: opacity var(--transition-speed);
+    }
+
+    .gallery-thumb:hover { 
+      transform: translateY(-4px); 
+      box-shadow: var(--glow-shadow); 
+    }
+
+    .gallery-thumb:hover img {
+      transform: scale(1.08);
+    }
+
+    .gallery-thumb:hover::after {
+      opacity: 1;
+    }
+
+    /* Overlay visual indicators */
+    .gallery-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.25rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity var(--transition-speed), transform var(--transition-speed);
+    }
+
+    .gallery-thumb:hover .gallery-thumb-overlay {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gallery-thumb-title {
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .gallery-thumb-zoom {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+    }
+
+    .gallery-caption { 
+      font-size: 0.8rem; 
+      color: var(--steel); 
+      margin-top: 0.75rem; 
+      font-style: italic; 
+    }
+
+    /* KEY DECISIONS CARDS */
+    .decision-card { 
+      background: var(--card); 
+      border: 1px solid var(--grey-light); 
+      border-radius: var(--border-radius); 
+      padding: 2rem; 
+      margin-bottom: 1.5rem; 
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+
+    .decision-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.05);
+    }
+
+    .decision-title { 
+      font-size: 1rem; 
+      font-weight: 600; 
+      color: var(--primary); 
+      margin-bottom: 0.75rem; 
+    }
+
+    .decision-body { 
+      font-size: 0.92rem; 
+      color: var(--steel); 
+      line-height: 1.7; 
+    }
+
+    /* LESSONS */
+    .lesson-item { 
+      display: flex; 
+      gap: 1.5rem; 
+      margin-bottom: 1.75rem; 
+    }
+
+    .lesson-num { 
+      font-family: 'JetBrains Mono', monospace; 
+      font-size: 0.8rem; 
+      font-weight: 600;
+      color: var(--secondary); 
+      min-width: 28px; 
+      padding-top: 0.1rem; 
+    }
+
+    .lesson-text { 
+      font-size: 0.95rem; 
+      color: #3A3A4A; 
+      line-height: 1.8; 
+    }
+
+    /* SKILLS CHIPS */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-chip { 
+      font-family: 'JetBrains Mono', monospace; 
+      font-size: 0.68rem; 
+      letter-spacing: 0.04em; 
+      padding: 0.45rem 0.9rem; 
+      background: var(--card); 
+      color: var(--primary); 
+      border: 1px solid var(--grey-light);
+      border-radius: 4px; 
+      display: inline-block; 
+      transition: border-color var(--transition-speed), color var(--transition-speed), box-shadow var(--transition-speed);
+    }
+
+    .skill-chip:hover {
+      border-color: var(--accent);
+      color: var(--secondary);
+      box-shadow: 0 2px 8px rgba(0,174,239,0.1);
+    }
+
+    /* NAVIGATION FOOTER */
+    .cs-nav-footer { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      padding: 4rem 0 1rem; 
+      border-top: 1px solid var(--grey-light); 
+      margin-top: 5rem; 
+    }
+
+    .cs-nav-link { 
+      text-decoration: none; 
+      display: flex; 
+      flex-direction: column; 
+      gap: 0.4rem; 
+    }
+
+    .cs-nav-link .cnl-label { 
+      font-family: 'JetBrains Mono', monospace; 
+      font-size: 0.68rem; 
+      letter-spacing: 0.1rem; 
+      text-transform: uppercase; 
+      color: var(--steel); 
+    }
+
+    .cs-nav-link .cnl-title { 
+      font-family: 'Playfair Display', serif; 
+      font-size: 1.15rem; 
+      color: var(--primary); 
+      transition: color var(--transition-speed); 
+    }
+
+    .cs-nav-link:hover .cnl-title { 
+      color: var(--secondary); 
+    }
+
+    .cs-nav-link.right { 
+      text-align: right; 
+    }
+
+    .back-btn { 
+      display: inline-flex; 
+      align-items: center; 
+      gap: 0.5rem; 
+      font-size: 0.8rem; 
+      font-weight: 600; 
+      letter-spacing: 0.08em; 
+      text-transform: uppercase; 
+      color: var(--primary); 
+      text-decoration: none; 
+      border-bottom: 2px solid var(--accent); 
+      padding-bottom: 4px; 
+      transition: color var(--transition-speed), border-color var(--transition-speed); 
+    }
+
+    .back-btn:hover { 
+      color: var(--secondary); 
+      border-color: var(--primary);
+    }
+
+    /* REVEAL ON SCROLL */
+    .reveal { 
+      opacity: 0; 
+      transform: translateY(30px); 
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); 
+    }
+
+    .reveal.visible { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+
+    /* FULLSCREEN LIGHTBOX & NAVIGATION */
+    .lightbox { 
+      display: none; 
+      position: fixed; 
+      inset: 0; 
+      background: rgba(4, 30, 66, 0.98); 
+      z-index: 1000; 
+      align-items: center; 
+      justify-content: center; 
+      padding: 3rem; 
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .lightbox.open { 
+      display: flex; 
+    }
+
+    .lightbox-content-wrapper {
+      position: relative;
+      max-width: 85vw;
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox img { 
+      max-width: 100%; 
+      max-height: 75vh; 
+      object-fit: contain; 
+      border-radius: 4px; 
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-close { 
+      position: absolute; 
+      top: 2rem; 
+      right: 2rem; 
+      color: var(--white); 
+      font-size: 1.5rem; 
+      cursor: pointer; 
+      opacity: 0.6; 
+      transition: opacity var(--transition-speed), transform var(--transition-speed); 
+      background: none; 
+      border: none; 
+      padding: 0.5rem;
+      z-index: 1010;
+    }
+
+    .lightbox-close:hover { 
+      opacity: 1; 
+      transform: scale(1.1);
+    }
+
+    /* Lightbox Nav Buttons */
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.25rem;
+      transition: background var(--transition-speed), transform var(--transition-speed), opacity var(--transition-speed);
+      z-index: 1005;
+    }
+
+    .lightbox-nav:hover {
+      background: var(--secondary);
+      transform: translateY(-50%) scale(1.05);
+      border-color: var(--accent);
+    }
+
+    .lightbox-nav:active {
+      transform: translateY(-50%) scale(0.95);
+    }
+
+    .lightbox-prev {
+      left: 1.5rem;
+    }
+
+    .lightbox-next {
+      right: 1.5rem;
+    }
+
+    .lightbox-caption { 
+      margin-top: 1.25rem;
+      color: rgba(255, 255, 255, 0.75); 
+      font-size: 0.85rem; 
+      font-family: 'JetBrains Mono', monospace; 
+      letter-spacing: 0.05em; 
+      text-align: center;
+      max-width: 600px;
+    }
+
+    /* RESPONSIVENESS */
+    @media (max-width: 1024px) {
+      nav { padding: 1.25rem 2.5rem; }
+      .cs-hero { padding: 8rem 2.5rem 4rem; }
+      .cs-content { padding: 5rem 2.5rem; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 1.1rem 1.5rem; }
+      .cs-hero { padding: 7rem 1.5rem 3rem; min-height: auto; }
+      .cs-content { padding: 4rem 1.5rem; }
+      .results-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .lightbox { padding: 1.5rem; }
+      .lightbox-nav { width: 40px; height: 40px; font-size: 1rem; }
+      .lightbox-prev { left: 0.5rem; }
+      .lightbox-next { right: 0.5rem; }
+      model-viewer { height: 400px; }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .cs-meta { grid-template-columns: 1fr; gap: 1.25rem; }
+      .cs-nav-footer { flex-direction: column; gap: 2rem; align-items: flex-start; }
+      .cs-nav-link.right { text-align: left; }
+      model-viewer { height: 320px; }
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">RM / Portfolio</a>
-  <a href="index.html#projects" class="nav-back">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-    All Projects
-  </a>
-</nav>
-
-<!-- HERO -->
-<div class="cs-hero">
-  <div class="cs-hero-bg"></div>
-  <div class="cs-hero-inner">
-    <p class="cs-eyebrow">Project 01 · Motorsport Engineering · Formula Student</p>
-    <h1 class="cs-title">Formula Bharat<br>Race Car</h1>
-    <p class="cs-subtitle">Led a 25-member team to design, optimise, and compete with a Formula Student single-seater — achieving All India Rank 9 through structural analysis, weight reduction, and team management.</p>
-    <div class="cs-meta">
-      <div class="cs-meta-item"><p class="cs-meta-label">Role</p><p class="cs-meta-value">Team Captain & Lead Design Engineer</p></div>
-      <div class="cs-meta-item"><p class="cs-meta-label">Organisation</p><p class="cs-meta-value">Team RGIT Racing</p></div>
-      <div class="cs-meta-item"><p class="cs-meta-label">Duration</p><p class="cs-meta-value">2022 – 2024 (3 seasons)</p></div>
-      <div class="cs-meta-item"><p class="cs-meta-label">Result</p><p class="cs-meta-value">All India Rank 9 · Formula Bharat</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- CONTENT -->
-<div class="cs-content">
-
-  <!-- KEY RESULTS -->
-  <div class="cs-section reveal">
-    <div class="results-grid">
-      <div class="result-box"><div class="rb-num">9th</div><div class="rb-label">All India Rank · Formula Bharat</div></div>
-      <div class="result-box"><div class="rb-num">22.5%</div><div class="rb-label">Chassis weight reduction (40→31 kg)</div></div>
-      <div class="result-box"><div class="rb-num">25</div><div class="rb-label">Engineers led across all sub-teams</div></div>
-    </div>
-  </div>
-
-  <!-- PROJECT GALLERY -->
-  <div class="cs-section reveal">
-    <div class="gallery">
-      <p class="gallery-label">Project Gallery</p>
-
-      <!-- ═══════════════════════════════════════════════════════
-           MAIN HERO IMAGE
-           Replace the placeholder below with your actual image:
-           <img src="images/formula-hero.jpg" alt="Formula Bharat Race Car">
-           ═══════════════════════════════════════════════════════ -->
-      <div class="gallery-hero" id="hero-img">
-        <div class="img-placeholder">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span>[ Add main project photo here ]</span>
-        </div>
-        <!-- UNCOMMENT AND EDIT THIS LINE TO ADD YOUR MAIN PHOTO:
-        <img src="images/formula-main.jpg" alt="Formula Bharat Race Car — full car shot">
-        -->
-      </div>
-
-      <!-- ═══════════════════════════════════════════════════════
-           ADDITIONAL PHOTOS (up to 6)
-           For each photo you have, replace the placeholder div
-           inside each gallery-thumb with an <img> tag.
-           Example:
-           <img src="images/formula-chassis.jpg" alt="Chassis detail">
-           ═══════════════════════════════════════════════════════ -->
-      <div class="gallery-grid">
-        <div class="gallery-thumb" onclick="openLightbox(this)">
-          <div class="img-placeholder">[ Chassis / FEA screenshot ]</div>
-          <!-- <img src="images/formula-chassis.jpg" alt="Chassis FEA analysis"> -->
-        </div>
-        <div class="gallery-thumb" onclick="openLightbox(this)">
-          <div class="img-placeholder">[ Team at competition ]</div>
-          <!-- <img src="images/formula-team.jpg" alt="Team at Formula Bharat"> -->
-        </div>
-        <div class="gallery-thumb" onclick="openLightbox(this)">
-          <div class="img-placeholder">[ CAD model ]</div>
-          <!-- <img src="images/formula-cad.jpg" alt="SolidWorks CAD model"> -->
-        </div>
-        <div class="gallery-thumb" onclick="openLightbox(this)">
-          <div class="img-placeholder">[ Fabrication / welding ]</div>
-          <!-- <img src="images/formula-fab.jpg" alt="Chassis fabrication"> -->
-        </div>
-        <div class="gallery-thumb" onclick="openLightbox(this)">
-          <div class="img-placeholder">[ Track testing ]</div>
-          <!-- <img src="images/formula-track.jpg" alt="Track testing day"> -->
-        </div>
-        <div class="gallery-thumb" onclick="openLightbox(this)">
-          <div class="img-placeholder">[ Award / rank certificate ]</div>
-          <!-- <img src="images/formula-award.jpg" alt="All India Rank 9 certificate"> -->
-        </div>
-      </div>
-      <p class="gallery-caption">Formula Bharat 2023–24 · Team RGIT Racing</p>
-    </div>
-  </div>
-
-  <!-- PROBLEM -->
-  <div class="cs-section reveal">
-    <p class="cs-section-label">01 · Problem</p>
-    <h2 class="cs-section-heading">The Challenge</h2>
-    <div class="cs-body">
-      <p>Formula Student requires student teams to design, build, and compete with a single-seat formula-style race car. Beyond the engineering challenge, it demands exceptional project management, cross-team coordination, and the ability to make sound engineering decisions under time and budget pressure.</p>
-      <p>For Team RGIT Racing, the primary technical challenge was the chassis: the existing design was overweight, structurally inefficient, and limiting the car's performance in dynamic events. The target was a <strong>significant reduction in unsprung and total chassis mass</strong> without compromising structural integrity or driver safety — both critical requirements under Formula Student rules.</p>
-      <p>Simultaneously, as Team Captain, the challenge was leading 25 engineers across mechanical, electrical, and aerodynamics sub-teams — ensuring all systems integrated correctly and that the full car was competition-ready on schedule.</p>
-    </div>
-  </div>
-
-  <!-- CONSTRAINTS -->
-  <div class="cs-section reveal">
-    <p class="cs-section-label">02 · Constraints</p>
-    <h2 class="cs-section-heading">Engineering Constraints</h2>
-    <div class="cs-body">
-      <ul>
-        <li><strong>Regulatory compliance:</strong> All chassis dimensions, materials, and construction methods governed by Formula Student rules (SAE / FSAE standards)</li>
-        <li><strong>Safety requirements:</strong> Driver roll hoop, impact attenuator, and harness mounting points must meet strict load case requirements</li>
-        <li><strong>Budget:</strong> Limited team budget required careful material selection and supplier negotiation</li>
-        <li><strong>Timeline:</strong> 8-month build cycle from design freeze to competition day</li>
-        <li><strong>Manufacturing capability:</strong> Constrained to in-house tube bending, TIG welding, and university workshop facilities</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- DESIGN PROCESS -->
-  <div class="cs-section reveal">
-    <p class="cs-section-label">03 · Design Process</p>
-    <h2 class="cs-section-heading">From Concept to Competition</h2>
-    <div class="cs-body">
-      <p>The design process began with a thorough review of the previous season's chassis — identifying high-mass, low-stress regions that were candidates for material removal or tube gauge reduction. Load path analysis using hand calculations established the primary structural requirements before moving into CAD.</p>
-      <p>The chassis was fully modelled in <strong>SolidWorks</strong>, with tube centrelines defined first, followed by joint design. Design iterations were driven by FEA results, with each design change evaluated against a combination of mass, stiffness, and factor of safety.</p>
-      <p>Close collaboration with the suspension, drivetrain, and aerodynamics sub-teams was essential — hard point locations, firewall packaging, and bodywork mounting all influenced chassis geometry. Weekly technical reviews kept all teams aligned.</p>
-    </div>
-  </div>
-
-  <!-- FEA / ENGINEERING ANALYSIS -->
-  <div class="cs-section reveal">
-    <p class="cs-section-label">04 · Engineering Analysis</p>
-    <h2 class="cs-section-heading">FEA-Driven Optimisation</h2>
-    <div class="cs-body">
-      <p>ANSYS Mechanical was used to run a series of structural analyses across the key load cases: torsional stiffness, bending stiffness, front impact, side impact, and roll-over. Each analysis identified regions of stress concentration and under-utilised material.</p>
-      <p>The optimisation process was iterative: FEA results informed design changes, which were re-modelled in SolidWorks, re-meshed, and re-analysed. Key outcomes included:</p>
-      <ul>
-        <li>Reduction in tube wall thickness on secondary structural members where stress results demonstrated significant margin</li>
-        <li>Reorientation of key bracing tubes to improve load path efficiency</li>
-        <li>Localised reinforcement at high-stress nodes, replacing mass removed elsewhere</li>
-        <li>Final chassis mass: <strong>31 kg</strong> (down from 40 kg) with equal or improved stiffness-to-weight ratio</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- KEY DECISIONS -->
-  <div class="cs-section reveal">
-    <p class="cs-section-label">05 · Key Decisions</p>
-    <h2 class="cs-section-heading">Engineering Judgement</h2>
-    <div class="decision-card">
-      <p class="decision-title">Material grade selection for main hoop</p>
-      <p class="decision-body">Chosen to remain with AISI 4130 chromoly steel rather than switching to aluminium for the main roll hoop — the weldability, toughness, and rules-compliance considerations outweighed the mass saving from aluminium at this structural node.</p>
-    </div>
-    <div class="decision-card">
-      <p class="decision-title">Tube gauge standardisation</p>
-      <p class="decision-body">Standardised to two tube gauges (rather than four in the previous design) to simplify manufacturing and reduce cutting/bending setup time — accepting a minor mass penalty in exchange for a more reliable build schedule.</p>
-    </div>
-    <div class="decision-card">
-      <p class="decision-title">Budget allocation prioritisation</p>
-      <p class="decision-body">As Team Captain, made the decision to allocate a larger portion of the budget to driver ergonomics and pedal box design — reasoning that improved driver comfort translates directly to lap time in endurance events.</p>
-    </div>
-  </div>
-
-  <!-- RESULTS -->
-  <div class="cs-section reveal">
-    <p class="cs-section-label">06 · Results</p>
-    <h2 class="cs-section-heading">What We Achieved</h2>
-    <div class="cs-body">
-      <p>The car competed at Formula Bharat — India's largest and most competitive Formula Student event — and achieved <strong>All India Rank 9</strong>, a significant improvement on previous seasons and a strong result against teams from India's premier engineering institutions.</p>
-      <p>The chassis optimisation delivered a 22.5% weight reduction with maintained or improved structural performance, validated through both FEA and physical testing. The car passed all technical scrutineering requirements first time.</p>
-    </div>
-  </div>
-
-  <!-- LESSONS LEARNED -->
-  <div class="cs-section reveal">
-    <p class="cs-section-label">07 · Lessons Learned</p>
-    <h2 class="cs-section-heading">What I Took Away</h2>
-    <div class="lesson-item">
-      <span class="lesson-num">01</span>
-      <p class="lesson-text"><strong>Leadership is a technical skill.</strong> Managing 25 engineers effectively required as much precision as the FEA work — clear communication, structured decision-making, and the ability to resolve conflicting requirements across sub-teams.</p>
-    </div>
-    <div class="lesson-item">
-      <span class="lesson-num">02</span>
-      <p class="lesson-text"><strong>Simulation guides but does not replace judgement.</strong> FEA results are only as good as the boundary conditions and assumptions behind them. Developing engineering intuition to sanity-check simulation outputs was essential.</p>
-    </div>
-    <div class="lesson-item">
-      <span class="lesson-num">03</span>
-      <p class="lesson-text"><strong>Manufacturing constraints shape design.</strong> The best CAD model is worthless if it cannot be built reliably. Designing with the welding team's capabilities in mind led to a more consistent, higher-quality chassis.</p>
-    </div>
-  </div>
-
-  <!-- SKILLS -->
-  <div class="cs-section reveal">
-    <p class="cs-section-label">Skills Applied</p>
-    <div>
-      <span class="skill-chip">SolidWorks</span><span class="skill-chip">ANSYS FEA</span>
-      <span class="skill-chip">Structural Optimisation</span><span class="skill-chip">Team Leadership</span>
-      <span class="skill-chip">Budget Management</span><span class="skill-chip">Project Planning</span>
-      <span class="skill-chip">TIG Welding Review</span><span class="skill-chip">DFM</span>
-    </div>
-  </div>
-
-  <!-- FOOTER NAV -->
-  <div class="cs-nav-footer reveal">
-    <a href="index.html#projects" class="back-btn">← Back to Portfolio</a>
-    <a href="case-study-2.html" class="cs-nav-link right">
-      <span class="cnl-label">Next Project →</span>
-      <span class="cnl-title">Underwater Drone Development</span>
+  <!-- NAVIGATION -->
+  <nav aria-label="Main Navigation">
+    <a href="index.html" class="nav-logo">RM / Portfolio</a>
+    <a href="index.html#projects" class="nav-back" aria-label="Go back to projects portfolio section">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+      All Projects
     </a>
+  </nav>
+
+  <!-- HERO -->
+  <header class="cs-hero" aria-label="Case Study Header">
+    <div class="cs-hero-bg"></div>
+    <div class="cs-hero-inner">
+      <p class="cs-eyebrow">Project 01 · Motorsport Engineering · Formula Student</p>
+      <h1 class="cs-title">Formula Bharat<br>Race Car</h1>
+      <p class="cs-subtitle">Led a 25-member team to design, optimise, and compete with a Formula Student single-seater — achieving All India Rank 9 through structural analysis, weight reduction, and team management.</p>
+      
+      <div class="cs-meta">
+        <div class="cs-meta-item">
+          <p class="cs-meta-label">Role</p>
+          <p class="cs-meta-value">Team Captain & Lead Design Engineer</p>
+        </div>
+        <div class="cs-meta-item">
+          <p class="cs-meta-label">Organisation</p>
+          <p class="cs-meta-value">Team RGIT Racing</p>
+        </div>
+        <div class="cs-meta-item">
+          <p class="cs-meta-label">Duration</p>
+          <p class="cs-meta-value">2022 – 2024 (3 seasons)</p>
+        </div>
+        <div class="cs-meta-item">
+          <p class="cs-meta-label">Result</p>
+          <p class="cs-meta-value">All India Rank 9 · Formula Bharat</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="cs-content">
+
+    <!-- KEY RESULTS -->
+    <section class="cs-section reveal" aria-label="Key Project Results">
+      <div class="results-grid">
+        <div class="result-box">
+          <div class="rb-num">9th</div>
+          <div class="rb-label">All India Rank · Formula Bharat</div>
+        </div>
+        <div class="result-box">
+          <div class="rb-num">22.5%</div>
+          <div class="rb-label">Chassis weight reduction (40→31 kg)</div>
+        </div>
+        <div class="result-box">
+          <div class="rb-num">25</div>
+          <div class="rb-label">Engineers led across all sub-teams</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECT GALLERY -->
+    <section class="cs-section reveal" aria-label="3D Model & Image Gallery">
+      <div class="gallery">
+        <p class="gallery-label">Interactive CAD Model</p>
+
+        <!-- 3D Viewer Container -->
+        <div class="viewer-container">
+          <div class="viewer-header">
+            <h3>FSAE Chassis Geometry</h3>
+            <span class="viewer-instruction">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="vertical-align: middle;">
+                <circle cx="12" cy="12" r="10"/><path d="m10 15 5-3-5-3v6Z"/>
+              </svg>
+              Drag to Rotate · Scroll to Zoom
+            </span>
+          </div>
+          
+          <!-- Interactive Mock 3D Chassis fallback when model fails to load -->
+          <div id="model-fallback" class="model-fallback">
+            <canvas id="fallback-canvas"></canvas>
+            <div class="fallback-overlay-text">
+              <p class="fallback-title">3D Chassis Wireframe</p>
+              <p class="fallback-subtitle">Drag to rotate CAD nodes (Fallback Active)</p>
+            </div>
+          </div>
+          
+          <model-viewer
+              id="fsae-viewer"
+              alt="Formula Bharat Chassis 3D GLTF Model Viewer"
+              camera-controls
+              auto-rotate
+              shadow-intensity="1.5"
+              exposure="1.1"
+              interaction-prompt="auto"
+              loading="lazy">
+          </model-viewer>
+        </div>
+
+        <p class="gallery-label">Structural & Competition Photos</p>
+
+        <!-- Gallery Thumbnails -->
+        <div class="gallery-grid">
+          <div class="gallery-thumb" onclick="openLightbox(0)" role="button" aria-label="View competition vehicle" tabindex="0">
+            <img src="images/formula1.jpg" alt="Formula Bharat Race Car on track" loading="lazy">
+            <div class="gallery-thumb-overlay">
+              <p class="gallery-thumb-title">Formula Bharat Race Car</p>
+              <p class="gallery-thumb-zoom">Click to Expand</p>
+            </div>
+          </div>
+
+          <div class="gallery-thumb" onclick="openLightbox(1)" role="button" aria-label="View CAD Development" tabindex="0">
+            <img src="images/formula2.jpg" alt="CAD Development modeling in SolidWorks" loading="lazy">
+            <div class="gallery-thumb-overlay">
+              <p class="gallery-thumb-title">CAD Development</p>
+              <p class="gallery-thumb-zoom">Click to Expand</p>
+            </div>
+          </div>
+
+          <div class="gallery-thumb" onclick="openLightbox(2)" role="button" aria-label="View FEA Analysis" tabindex="0">
+            <img src="images/formula3.jpg" alt="FEA analysis results mapping stress load lines" loading="lazy">
+            <div class="gallery-thumb-overlay">
+              <p class="gallery-thumb-title">FEA Analysis</p>
+              <p class="gallery-thumb-zoom">Click to Expand</p>
+            </div>
+          </div>
+
+          <div class="gallery-thumb" onclick="openLightbox(3)" role="button" aria-label="View Manufacturing process" tabindex="0">
+            <img src="images/formula4.jpg" alt="Manufacturing process involving TIG welding" loading="lazy">
+            <div class="gallery-thumb-overlay">
+              <p class="gallery-thumb-title">Chassis Manufacturing</p>
+              <p class="gallery-thumb-zoom">Click to Expand</p>
+            </div>
+          </div>
+
+          <div class="gallery-thumb" onclick="openLightbox(4)" role="button" aria-label="View Competition Day" tabindex="0">
+            <img src="images/formula5.jpg" alt="Team presentation at competition day" loading="lazy">
+            <div class="gallery-thumb-overlay">
+              <p class="gallery-thumb-title">Competition Day</p>
+              <p class="gallery-thumb-zoom">Click to Expand</p>
+            </div>
+          </div>
+        </div>
+        <p class="gallery-caption">All simulations and images reflect actual physical test alignments, design verification parameters, and real manufacturing processes accomplished by the 2022–2024 development teams.</p>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="cs-section reveal">
+      <p class="cs-section-label">01 · Problem</p>
+      <h2 class="cs-section-heading">The Challenge</h2>
+      <div class="cs-body">
+        <p>Formula Student requires student teams to design, build, and compete with a single-seat formula-style race car. Beyond the engineering challenge, it demands exceptional project management, cross-team coordination, and the ability to make sound engineering decisions under time and budget pressure.</p>
+        <p>For Team RGIT Racing, the primary technical challenge was the chassis: the existing design was overweight, structurally inefficient, and limiting the car's performance in dynamic events. The target was a <strong>significant reduction in unsprung and total chassis mass</strong> without compromising structural integrity or driver safety — both critical requirements under Formula Student rules.</p>
+        <p>Simultaneously, as Team Captain, the challenge was leading 25 engineers across mechanical, electrical, and aerodynamics sub-teams — ensuring all systems integrated correctly and that the full car was competition-ready on schedule.</p>
+      </div>
+    </section>
+
+    <!-- CONSTRAINTS -->
+    <section class="cs-section reveal">
+      <p class="cs-section-label">02 · Constraints</p>
+      <h2 class="cs-section-heading">Engineering Constraints</h2>
+      <div class="cs-body">
+        <ul>
+          <li><strong>Regulatory compliance:</strong> All chassis dimensions, materials, and construction methods governed by Formula Student rules (SAE / FSAE standards)</li>
+          <li><strong>Safety requirements:</strong> Driver roll hoop, impact attenuator, and harness mounting points must meet strict load case requirements</li>
+          <li><strong>Budget:</strong> Limited team budget required careful material selection and supplier negotiation</li>
+          <li><strong>Timeline:</strong> 8-month build cycle from design freeze to competition day</li>
+          <li><strong>Manufacturing capability:</strong> Constrained to in-house tube bending, TIG welding, and university workshop facilities</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- DESIGN PROCESS -->
+    <section class="cs-section reveal">
+      <p class="cs-section-label">03 · Design Process</p>
+      <h2 class="cs-section-heading">From Concept to Competition</h2>
+      <div class="cs-body">
+        <p>The design process began with a thorough review of the previous season's chassis — identifying high-mass, low-stress regions that were candidates for material removal or tube gauge reduction. Load path analysis using hand calculations established the primary structural requirements before moving into CAD.</p>
+        <p>The chassis was fully modelled in <strong>SolidWorks</strong>, with tube centrelines defined first, followed by joint design. Design iterations were driven by FEA results, with each design change evaluated against a combination of mass, stiffness, and factor of safety.</p>
+        <p>Close collaboration with the suspension, drivetrain, and aerodynamics sub-teams was essential — hard point locations, firewall packaging, and bodywork mounting all influenced chassis geometry. Weekly technical reviews kept all teams aligned.</p>
+      </div>
+    </section>
+
+    <!-- FEA / ENGINEERING ANALYSIS -->
+    <section class="cs-section reveal">
+      <p class="cs-section-label">04 · Engineering Analysis</p>
+      <h2 class="cs-section-heading">FEA-Driven Optimisation</h2>
+      <div class="cs-body">
+        <p>ANSYS Mechanical was used to run a series of structural analyses across the key load cases: torsional stiffness, bending stiffness, front impact, side impact, and roll-over. Each analysis identified regions of stress concentration and under-utilised material.</p>
+        <p>The optimisation process was iterative: FEA results informed design changes, which were re-modelled in SolidWorks, re-meshed, and re-analysed. Key outcomes included:</p>
+        <ul>
+          <li>Reduction in tube wall thickness on secondary structural members where stress results demonstrated significant margin</li>
+          <li>Reorientation of key bracing tubes to improve load path efficiency</li>
+          <li>Localised reinforcement at high-stress nodes, replacing mass removed elsewhere</li>
+          <li>Final chassis mass: <strong>31 kg</strong> (down from 40 kg) with equal or improved stiffness-to-weight ratio</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- KEY DECISIONS -->
+    <section class="cs-section reveal" aria-label="Key Engineering Decisions">
+      <p class="cs-section-label">05 · Key Decisions</p>
+      <h2 class="cs-section-heading">Engineering Judgement</h2>
+      
+      <div class="decision-card">
+        <h3 class="decision-title">Material grade selection for main hoop</h3>
+        <p class="decision-body">Chosen to remain with AISI 4130 chromoly steel rather than switching to aluminium for the main roll hoop — the weldability, toughness, and rules-compliance considerations outweighed the mass saving from aluminium at this structural node.</p>
+      </div>
+      
+      <div class="decision-card">
+        <h3 class="decision-title">Tube gauge standardisation</h3>
+        <p class="decision-body">Standardised to two tube gauges (rather than four in the previous design) to simplify manufacturing and reduce cutting/bending setup time — accepting a minor mass penalty in exchange for a more reliable build schedule.</p>
+      </div>
+      
+      <div class="decision-card">
+        <h3 class="decision-title">Budget allocation prioritisation</h3>
+        <p class="decision-body">As Team Captain, made the decision to allocate a larger portion of the budget to driver ergonomics and pedal box design — reasoning that improved driver comfort translates directly to lap time in endurance events.</p>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="cs-section reveal">
+      <p class="cs-section-label">06 · Results</p>
+      <h2 class="cs-section-heading">What We Achieved</h2>
+      <div class="cs-body">
+        <p>The car competed at Formula Bharat — India's largest and most competitive Formula Student event — and achieved <strong>All India Rank 9</strong>, a significant improvement on previous seasons and a strong result against teams from India's premier engineering institutions.</p>
+        <p>The chassis optimisation delivered a 22.5% weight reduction with maintained or improved structural performance, validated through both FEA and physical testing. The car passed all technical scrutineering requirements first time.</p>
+      </div>
+    </section>
+
+    <!-- LESSONS LEARNED -->
+    <section class="cs-section reveal" aria-label="Lessons Learned">
+      <p class="cs-section-label">07 · Lessons Learned</p>
+      <h2 class="cs-section-heading">What I Took Away</h2>
+      
+      <div class="lesson-item">
+        <span class="lesson-num">01</span>
+        <p class="lesson-text"><strong>Leadership is a technical skill.</strong> Managing 25 engineers effectively required as much precision as the FEA work — clear communication, structured decision-making, and the ability to resolve conflicting requirements across sub-teams.</p>
+      </div>
+      
+      <div class="lesson-item">
+        <span class="lesson-num">02</span>
+        <p class="lesson-text"><strong>Simulation guides but does not replace judgement.</strong> FEA results are only as good as the boundary conditions and assumptions behind them. Developing engineering intuition to sanity-check simulation outputs was essential.</p>
+      </div>
+      
+      <div class="lesson-item">
+        <span class="lesson-num">03</span>
+        <p class="lesson-text"><strong>Manufacturing constraints shape design.</strong> The best CAD model is worthless if it cannot be built reliably. Designing with the welding team's capabilities in mind led to a more consistent, higher-quality chassis.</p>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="cs-section reveal" aria-label="Skills Applied">
+      <p class="cs-section-label">Skills Applied</p>
+      <div class="skills-container">
+        <span class="skill-chip">SolidWorks</span>
+        <span class="skill-chip">ANSYS FEA</span>
+        <span class="skill-chip">Structural Optimisation</span>
+        <span class="skill-chip">Team Leadership</span>
+        <span class="skill-chip">Budget Management</span>
+        <span class="skill-chip">Project Planning</span>
+        <span class="skill-chip">TIG Welding Review</span>
+        <span class="skill-chip">DFM</span>
+      </div>
+    </section>
+
+    <!-- FOOTER NAV -->
+    <footer class="cs-nav-footer reveal" aria-label="Case Study Pagination">
+      <a href="index.html#projects" class="back-btn">← Back to Portfolio</a>
+      <a href="case-study-2.html" class="cs-nav-link right" aria-label="Go to the next project case study">
+        <span class="cnl-label">Next Project →</span>
+        <span class="cnl-title">Underwater Drone Development</span>
+      </a>
+    </footer>
+
+  </main>
+
+  <!-- LIGHTBOX (Dynamic image tracking with keyboard and mouse navigation) -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image gallery fullscreen preview">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close lightbox">✕</button>
+    
+    <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)" aria-label="Previous image">‹</button>
+    
+    <div class="lightbox-content-wrapper">
+      <img id="lightbox-img" src="" alt="">
+      <p class="lightbox-caption" id="lightbox-cap"></p>
+    </div>
+    
+    <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)" aria-label="Next image">›</button>
   </div>
 
-</div>
+  <script>
+    // Scroll reveal observer
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { 
+        if (e.isIntersecting) { 
+          e.target.classList.add('visible'); 
+          observer.unobserve(e.target); 
+        } 
+      });
+    }, { threshold: 0.08 });
+    
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-  <img id="lightbox-img" src="" alt="">
-  <p class="lightbox-caption" id="lightbox-cap"></p>
-</div>
+    // Gallery details for dynamic Lightbox
+    const galleryImages = [
+      { src: 'images/formula1.jpg', alt: 'Formula Bharat Race Car on track' },
+      { src: 'images/formula2.jpg', alt: 'CAD Development modeling in SolidWorks' },
+      { src: 'images/formula3.jpg', alt: 'FEA analysis results mapping stress load lines' },
+      { src: 'images/formula4.jpg', alt: 'Manufacturing process involving TIG welding' },
+      { src: 'images/formula5.jpg', alt: 'Team presentation at competition day' }
+    ];
 
-<script>
-  // Scroll reveal
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    let currentImageIndex = 0;
 
-  // Lightbox
-  function openLightbox(thumb) {
-    const img = thumb.querySelector('img');
-    if (!img) return; // no real image yet
-    document.getElementById('lightbox-img').src = img.src;
-    document.getElementById('lightbox-img').alt = img.alt;
-    document.getElementById('lightbox-cap').textContent = img.alt;
-    document.getElementById('lightbox').classList.add('open');
-  }
-  function closeLightbox(e) {
-    if (!e || e.target === document.getElementById('lightbox') || e.target.classList.contains('lightbox-close')) {
-      document.getElementById('lightbox').classList.remove('open');
+    // Open Lightbox
+    function openLightbox(index) {
+      currentImageIndex = index;
+      updateLightboxContent();
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden'; // Lock background scrolling
     }
-  }
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open'); });
-</script>
+
+    // Close Lightbox
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = ''; // Restore background scrolling
+    }
+
+    // Navigate Lightbox (Next/Prev)
+    function navigateLightbox(direction) {
+      currentImageIndex += direction;
+      if (currentImageIndex >= galleryImages.length) {
+        currentImageIndex = 0; // Loop back to start
+      } else if (currentImageIndex < 0) {
+        currentImageIndex = galleryImages.length - 1; // Loop back to end
+      }
+      updateLightboxContent();
+    }
+
+    // Update image and caption content
+    function updateLightboxContent() {
+      const imgData = galleryImages[currentImageIndex];
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxCap = document.getElementById('lightbox-cap');
+      
+      lightboxImg.style.opacity = '0';
+      
+      // Delay source change slightly for transition effect
+      setTimeout(() => {
+        lightboxImg.src = imgData.src;
+        lightboxImg.alt = imgData.alt;
+        lightboxCap.textContent = `${imgData.alt} (${currentImageIndex + 1} / ${galleryImages.length})`;
+        lightboxImg.style.opacity = '1';
+      }, 150);
+    }
+
+    // Capture clicks on the outer container to close Lightbox
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeLightbox();
+      }
+    });
+
+    // Keyboard Shortcuts (Esc, Arrow Left, Arrow Right)
+    document.addEventListener('keydown', e => { 
+      const lightboxOpen = document.getElementById('lightbox').classList.contains('open');
+      if (!lightboxOpen) return;
+
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'ArrowRight') {
+        navigateLightbox(1);
+      } else if (e.key === 'ArrowLeft') {
+        navigateLightbox(-1);
+      }
+    });
+
+    // Handle Keyboard focus activation on gallery thumbnails
+    document.querySelectorAll('.gallery-thumb').forEach((thumb, index) => {
+      thumb.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(index);
+        }
+      });
+    });
+
+    /* 3D Model Loading Protection and Interactive Fallback Engine */
+    const viewer = document.getElementById('fsae-viewer');
+    const fallback = document.getElementById('model-fallback');
+    let fallbackAnimFrame = null;
+
+    function showFallback() {
+      fallback.classList.remove('hidden');
+      initFallbackCanvas();
+    }
+
+    function hideFallback() {
+      fallback.classList.add('hidden');
+      if (fallbackAnimFrame) {
+        cancelAnimationFrame(fallbackAnimFrame);
+      }
+    }
+
+    viewer.addEventListener('load', () => {
+      hideFallback();
+    });
+
+    viewer.addEventListener('error', (err) => {
+      console.warn("Model viewer load error, displaying interactive 3D fallback.", err);
+      showFallback();
+    });
+
+    // Initialize 3D source with dynamic URL protection
+    let isValidBase = false;
+    try {
+      new URL('.', document.baseURI);
+      isValidBase = !document.baseURI.startsWith('data:') && !document.baseURI.startsWith('blob:');
+    } catch(e) {}
+
+    if (isValidBase) {
+      try {
+        const absoluteSrc = new URL('models/formula.glb', document.baseURI).href;
+        viewer.setAttribute('src', absoluteSrc);
+      } catch(err) {
+        showFallback();
+      }
+    } else {
+      showFallback();
+    }
+
+    /* Interactive 3D Chassis Spaceframe Fallback Engine (Pure Canvas Matrix Transformation) */
+    function initFallbackCanvas() {
+      const canvas = document.getElementById('fallback-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      
+      let width = 0, height = 0;
+      function resize() {
+        width = canvas.clientWidth;
+        height = canvas.clientHeight;
+        canvas.width = width * window.devicePixelRatio;
+        canvas.height = height * window.devicePixelRatio;
+        ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      // 3D Nodes representing an FSAE Chassis Spaceframe
+      const vertices = [
+        // Front bulkhead (0 - 3)
+        {x: -0.3, y: -0.2, z: 1.0}, {x: 0.3, y: -0.2, z: 1.0},
+        {x: 0.3, y: 0.2, z: 1.0}, {x: -0.3, y: 0.2, z: 1.0},
+        // Front Hoop / Dashboard (4 - 7)
+        {x: -0.4, y: -0.3, z: 0.4}, {x: 0.4, y: -0.3, z: 0.4},
+        {x: 0.4, y: 0.35, z: 0.4}, {x: -0.4, y: 0.35, z: 0.4},
+        // Main Roll Hoop (8 - 11)
+        {x: -0.45, y: -0.3, z: -0.3}, {x: 0.45, y: -0.3, z: -0.3},
+        {x: 0.45, y: 0.7, z: -0.3}, {x: -0.45, y: 0.7, z: -0.3},
+        // Rear Bulkhead (12 - 15)
+        {x: -0.3, y: -0.3, z: -1.1}, {x: 0.3, y: -0.3, z: -1.1},
+        {x: 0.3, y: 0.3, z: -1.1}, {x: -0.3, y: 0.3, z: -1.1},
+      ];
+
+      const edges = [
+        // Bulkhead structural rings
+        [0,1], [1,2], [2,3], [3,0],
+        [4,5], [5,6], [6,7], [7,4],
+        [8,9], [9,10], [10,11], [11,8],
+        [12,13], [13,14], [14,15], [15,12],
+        // Longitudinal main members
+        [0,4], [1,5], [2,6], [3,7],
+        [4,8], [5,9], [6,10], [7,11],
+        [8,12], [9,13], [10,14], [11,15],
+        // Triangulation bracing nodes
+        [0,5], [3,6], [4,9], [7,10], [10,15], [11,14]
+      ];
+
+      let angleX = -0.3;
+      let angleY = 0.6;
+      let isDragging = false;
+      let prevMouseX = 0;
+      let prevMouseY = 0;
+      let autoRotationSpeed = 0.003;
+      let lastInteractionTime = Date.now();
+
+      function project(v) {
+        // Rotate around Y axis
+        let cosY = Math.cos(angleY), sinY = Math.sin(angleY);
+        let x1 = v.x * cosY - v.z * sinY;
+        let z1 = v.x * sinY + v.z * cosY;
+
+        // Rotate around X axis
+        let cosX = Math.cos(angleX), sinX = Math.sin(angleX);
+        let y2 = v.y * cosX - z1 * sinX;
+        let z2 = v.y * sinX + z1 * cosX;
+
+        // Perspective scaling
+        const distance = 2.5;
+        const scale = Math.min(width, height) * 0.7;
+        const factor = scale / (distance + z2);
+
+        return {
+          x: x1 * factor + width / 2,
+          y: -y2 * factor + height / 2 + 30 // offset down slightly to ground it
+        };
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Grid platform render
+        const gridZ = 8;
+        const gridX = 8;
+        ctx.strokeStyle = 'rgba(0, 174, 239, 0.08)';
+        ctx.lineWidth = 1;
+        for (let i = -gridX; i <= gridX; i++) {
+          let p1 = project({x: i * 0.2, y: -0.3, z: -1.5});
+          let p2 = project({x: i * 0.2, y: -0.3, z: 1.5});
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.stroke();
+        }
+        for (let j = -gridZ; j <= gridZ; j++) {
+          let p1 = project({x: -1.5, y: -0.3, z: j * 0.2});
+          let p2 = project({x: 1.5, y: -0.3, z: j * 0.2});
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.stroke();
+        }
+
+        // Project and connect all structural nodes
+        const projected = vertices.map(v => project(v));
+
+        // Draw structural tubes (edges)
+        edges.forEach(edge => {
+          const p1 = projected[edge[0]];
+          const p2 = projected[edge[1]];
+
+          // Draw double depth glow for active premium styling
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = 'rgba(0, 174, 239, 0.45)';
+          ctx.lineWidth = 2.5;
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = '#FFFFFF';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        });
+
+        // Highlight key node intersection joints
+        projected.forEach(p => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 3, 0, 2 * Math.PI);
+          ctx.fillStyle = '#00AEEF';
+          ctx.fill();
+          ctx.strokeStyle = '#FFFFFF';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        });
+
+        // Trigger Auto-rotation idle loop after 4 seconds of inactivity
+        if (!isDragging && Date.now() - lastInteractionTime > 4000) {
+          angleY += autoRotationSpeed;
+        }
+
+        fallbackAnimFrame = requestAnimationFrame(draw);
+      }
+
+      // Track Mouse Drag interaction
+      canvas.addEventListener('mousedown', e => {
+        isDragging = true;
+        prevMouseX = e.clientX;
+        prevMouseY = e.clientY;
+        lastInteractionTime = Date.now();
+      });
+
+      window.addEventListener('mousemove', e => {
+        if (!isDragging) return;
+        const deltaX = e.clientX - prevMouseX;
+        const deltaY = e.clientY - prevMouseY;
+        angleY += deltaX * 0.005;
+        angleX += deltaY * 0.005;
+        prevMouseX = e.clientX;
+        prevMouseY = e.clientY;
+        lastInteractionTime = Date.now();
+      });
+
+      window.addEventListener('mouseup', () => {
+        isDragging = false;
+      });
+
+      // Track Touch Drag interaction (mobile compatibility)
+      canvas.addEventListener('touchstart', e => {
+        if (e.touches.length === 1) {
+          isDragging = true;
+          prevMouseX = e.touches[0].clientX;
+          prevMouseY = e.touches[0].clientY;
+          lastInteractionTime = Date.now();
+        }
+      }, { passive: true });
+
+      canvas.addEventListener('touchmove', e => {
+        if (!isDragging || e.touches.length !== 1) return;
+        const deltaX = e.touches[0].clientX - prevMouseX;
+        const deltaY = e.touches[0].clientY - prevMouseY;
+        angleY += deltaX * 0.006;
+        angleX += deltaY * 0.006;
+        prevMouseX = e.touches[0].clientX;
+        prevMouseY = e.touches[0].clientY;
+        lastInteractionTime = Date.now();
+      }, { passive: true });
+
+      canvas.addEventListener('touchend', () => {
+        isDragging = false;
+      });
+
+      draw();
+    }
+  </script>
 </body>
 </html>
