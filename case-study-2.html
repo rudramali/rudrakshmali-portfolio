@@ -98,6 +98,25 @@
 
   @media (max-width: 768px) { nav { padding: 1.1rem 1.5rem; } .cs-hero { padding: 7rem 1.5rem 3rem; } .cs-content { padding: 3rem 1.5rem; } .results-grid { grid-template-columns: 1fr 1fr; } .gallery-grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 480px) { .gallery-grid { grid-template-columns: 1fr; } .results-grid { grid-template-columns: 1fr; } }
+
+.company-btn{
+    display:inline-block;
+    margin-top:24px;
+    margin-bottom:32px;
+    padding:12px 24px;
+    background:#0057B8;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:600;
+    transition:all .3s ease;
+}
+
+.company-btn:hover{
+    background:#041E42;
+    transform:translateY(-2px);
+}
+
 </style>
 </head>
 <body>
@@ -116,6 +135,14 @@
     <p class="cs-eyebrow">Project 02 · R&D Engineering · Internship</p>
     <h1 class="cs-title">Underwater Drone<br>Development</h1>
     <p class="cs-subtitle">R&D internship at Go Float Tech — designing underwater drone components in SolidWorks, validating through testing, and delivering designs that were adopted directly into commercial production.</p>
+   
+    <a href="https://www.gofloat.tech/"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="company-btn">
+   Explore Go Float Tech →
+</a>
+
     <div class="cs-meta">
       <div class="cs-meta-item"><p class="cs-meta-label">Role</p><p class="cs-meta-value">R&D Design Intern</p></div>
       <div class="cs-meta-item"><p class="cs-meta-label">Organisation</p><p class="cs-meta-value">Go Float Tech</p></div>
@@ -138,44 +165,33 @@
   <!-- GALLERY -->
   <div class="cs-section reveal">
     <div class="gallery">
-      <p class="gallery-label">Project Gallery</p>
-      <div class="gallery-hero">
-        <div class="img-placeholder">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span>[ Add main drone photo / render here ]</span>
-        </div>
-        <!-- <img src="images/drone-main.jpg" alt="Underwater drone — main view"> -->
-      </div>
-      <div class="gallery-grid">
-        <div class="gallery-thumb" onclick="openLightbox(this)">
-          <div class="img-placeholder">[ SolidWorks CAD ]</div>
-          <!-- <img src="images/drone-cad.jpg" alt="SolidWorks CAD model"> -->
-        </div>
-        <div class="gallery-thumb" onclick="openLightbox(this)">
-          <div class="img-placeholder">[ Component detail ]</div>
-          <!-- <img src="images/drone-component.jpg" alt="Component detail"> -->
-        </div>
-        <div class="gallery-thumb" onclick="openLightbox(this)">
-          <div class="img-placeholder">[ Testing / validation ]</div>
-          <!-- <img src="images/drone-test.jpg" alt="Testing and validation"> -->
-        </div>
-        <div class="gallery-thumb" onclick="openLightbox(this)">
-          <div class="img-placeholder">[ Assembly ]</div>
-          <!-- <img src="images/drone-assembly.jpg" alt="Assembly"> -->
-        </div>
-        <div class="gallery-thumb" onclick="openLightbox(this)">
-          <div class="img-placeholder">[ Final product ]</div>
-          <!-- <img src="images/drone-final.jpg" alt="Final product"> -->
-        </div>
-        <div class="gallery-thumb" onclick="openLightbox(this)">
-          <div class="img-placeholder">[ In-water test ]</div>
-          <!-- <img src="images/drone-water.jpg" alt="In-water testing"> -->
-        </div>
-      </div>
-      <p class="gallery-caption">Go Float Tech · Underwater Drone R&D · 2023</p>
-    </div>
-  </div>
+    <p class="gallery-label">Project Gallery</p>
 
+    <div class="gallery-hero">
+        <img src="images/gofloat-main.jpg" alt="Go Float Tech Underwater Drone">
+    </div>
+
+    <div class="gallery-grid">
+
+        <div class="gallery-thumb" onclick="openLightbox(this)">
+            <img src="images/gofloat-1.jpg" alt="Go Float Tech">
+        </div>
+
+        <div class="gallery-thumb" onclick="openLightbox(this)">
+            <img src="images/gofloat-2.jpg" alt="Go Float Tech">
+        </div>
+
+        <div class="gallery-thumb" onclick="openLightbox(this)">
+            <img src="images/gofloat-3.jpg" alt="Go Float Tech">
+        </div>
+
+
+    </div>
+
+    <p class="gallery-caption">
+        Go Float Tech · Underwater Drone R&D · 2023
+    </p>
+</div>
   <div class="cs-section reveal">
     <p class="cs-section-label">01 · Problem</p>
     <h2 class="cs-section-heading">The Challenge</h2>

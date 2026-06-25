@@ -907,6 +907,39 @@
               <p class="gallery-thumb-zoom">Click to Expand</p>
             </div>
           </div>
+<div class="gallery-thumb" onclick="openLightbox(5)" role="button" aria-label="View Manufacturing Process" tabindex="0">
+    <img src="images/formula6.jpg" alt="Manufacturing Process" loading="lazy">
+    <div class="gallery-thumb-overlay">
+        <p class="gallery-thumb-title">Manufacturing Process</p>
+        <p class="gallery-thumb-zoom">Click to Expand</p>
+    </div>
+</div>
+
+<div class="gallery-thumb" onclick="openLightbox(6)">
+    <img src="images/formula7.jpg" alt="Competition Day">
+</div>
+
+<div class="gallery-thumb" onclick="openLightbox(8)">
+    <img src="images/formula8.jpg" alt="Technical Inspection">
+</div>
+
+<div class="gallery-thumb" onclick="openLightbox(9)">
+    <img src="images/formula9.jpg" alt="Technical Inspection">
+</div>
+
+<div class="gallery-thumb" onclick="openLightbox(10)">
+    <img src="images/formula10.jpg" alt="Technical Inspection">
+</div>
+
+<div class="gallery-thumb" onclick="openLightbox(11)">
+    <img src="images/formula11.jpg" alt="Technical Inspection">
+</div>
+
+<div class="gallery-thumb" onclick="openLightbox(12)">
+    <img src="images/formula12.jpg" alt="Technical Inspection">
+</div>
+</div>
+
         </div>
         <p class="gallery-caption">All simulations and images reflect actual physical test alignments, design verification parameters, and real manufacturing processes accomplished by the 2022–2024 development teams.</p>
       </div>
@@ -1071,14 +1104,21 @@
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     // Gallery details for dynamic Lightbox
-    const galleryImages = [
-      { src: 'images/formula1.jpg', alt: 'Formula Bharat Race Car on track' },
-      { src: 'images/formula2.jpg', alt: 'CAD Development modeling in SolidWorks' },
-      { src: 'images/formula3.jpg', alt: 'FEA analysis results mapping stress load lines' },
-      { src: 'images/formula4.jpg', alt: 'Manufacturing process involving TIG welding' },
-      { src: 'images/formula5.jpg', alt: 'Team presentation at competition day' }
-    ];
-
+   const galleryImages = [
+  { src: 'images/formula1.jpg' },
+  { src: 'images/formula2.jpg' },
+  { src: 'images/formula3.jpg' },
+  { src: 'images/formula4.jpg' },
+  { src: 'images/formula5.jpg' },
+  { src: 'images/formula6.jpg' },
+  { src: 'images/formula7.jpg' },
+  { src: 'images/formula8.jpg' },
+  { src: 'images/formula9.jpg' },
+  { src: 'images/formula10.jpg'},
+  { src: 'images/formula11.jpg'},
+  { src: 'images/formula12.jpg'}
+];
+  
     let currentImageIndex = 0;
 
     // Open Lightbox
